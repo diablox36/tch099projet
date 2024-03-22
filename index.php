@@ -28,7 +28,7 @@
       	<a href="https://equipe500.tch099.ovh/projet2/api/getpropriete">equipe500.tch099.ovh/projet2/api/getpropriete</a><br>
         <a href="https://equipe500.tch099.ovh/projet2/api/getAllImages">equipe500.tch099.ovh/projet2/api/getAllImages</a><br>
 
-     	<a href="https://equipe500.tch099.ovh/LocAppart">Site Web</a>
+     	<a href="https://equipe500.tch099.ovh/projet2/LocAppart">Site Web</a>
     </div>
   </div>
 </div>
