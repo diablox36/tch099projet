@@ -6,11 +6,8 @@ body{
 .logo {
     width: 200px;
 }
-h1{
-    width: 50%;
-}
 
-header{
+.headerBleu{
     padding: 1rem;
     background-color: lightblue;
     display: flex;
@@ -18,9 +15,18 @@ header{
     align-items: center;
     font-size: x-large;
 }
+.headerVert{
+    padding: 1rem;
+    background-color: lightgreen;
+    display: flex;
+    justify-content: center;
+}
 
-span{
+.spanBleu{
     color: dodgerblue;
+}
+.spanOrange{
+    color: orange;
 }
 
 .bouton{
@@ -42,7 +48,13 @@ span{
     color: white;
 }
 
-main{
+input{
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.carteMaison{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -59,7 +71,7 @@ article *:nth-child(3n) {
     flex-basis: 100%;
 }
 
-img{
+.imgMaison{
     width: 200px;
     height: 200px;
     align-self: center;
@@ -78,4 +90,39 @@ img{
 
 .description p{
     margin: 0;
+}
+
+
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form * {
+    margin: 5px;
+}
+
+.formulaire{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 300px;
+}
+
+.boutonBleu{
+    background-color: lightblue;
+    color: black;
+}
+
+.boutonBleu:hover{
+    background-color: dodgerblue;
+}
+
+#message_erreur{
+    color: red
 }

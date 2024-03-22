@@ -5,31 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LocAppart</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="style.css">
     <script type="module" src="inscription.js"></script>
 </head>
 
 <body>
-    <header>
-        <h1>LocAppart</h1>
+    <header class="headerVert">
+        <img src="img/LogoLocAppart.png" class="logo" alt="Logo LocAppart">
+    </header>
+    <main>
         <form>
             <input type="email" name="email" placeholder="Email">
-            <input type="text" name="nom" placeholder="Prénom Nom">
-            <input type="password" name="password" placeholder="Password">
+            <input type="text" name="nom" placeholder="Nom Complet">
+            <input type="password" name="password" placeholder="Mot de passe">
             <input type="tel" name="tel" placeholder="Téléphone">
             <div>
-                <label class="container">Propriétaire
+                <label>Propriétaire
                     <input id="proprietaire" type="radio" checked="checked" name="radio">
                 </label>
-                <label class="container">Locataire
+                <label>Locataire
                     <input type="radio" name="radio">
                 </label>
             </div>
-            <button id="register" name="register">Register</button>
+            <button class="bouton boutonBleu" id="register" name="register">Register</button>
+
 
         </form>
-    </header>
-    <main>
     </main>
 </body>
 

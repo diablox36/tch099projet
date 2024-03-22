@@ -39,6 +39,7 @@ function ajouterAppartement(appartement, image_url) {
   detailTitre.textContent = "Détails"
 
   img.src = image_url
+  img.classList.add("imgMaison")
   prix.textContent = appartement.prix + "$ / mois"
   adresse.textContent = appartement.adresse
   arrondissement.textContent = appartement.arrondissement
