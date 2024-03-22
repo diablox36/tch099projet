@@ -23,7 +23,7 @@ span{
     color: dodgerblue;
 }
 
-.boutonConnexion{
+.bouton{
     background-color: white;
     border: none;
     color: black;
@@ -37,7 +37,7 @@ span{
     font-size: medium;
 }
 
-.boutonConnexion:hover{
+.bouton:hover{
     background-color: grey;
     color: white;
 }

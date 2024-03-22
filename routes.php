@@ -19,6 +19,10 @@ catch(PDOException $e) {
 
 get('/projet2', 'index.php');
 get('/projet2/LocAppart', 'index.html');
+get('/projet2/LocAppart/connexion', 'login.html');
+get('/projet2/LocAppart/inscription', 'inscription.html');
+
+
 
 // API
 

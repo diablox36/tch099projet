@@ -24,12 +24,6 @@ buttonLogin.addEventListener('click', (event) => {
     }
 })
 
-
-document.querySelector("#register").addEventListener('click', (event) => {
-    event.preventDefault();
-    location.replace("./inscription.html");
-})
-
 async function getUser(email) {
     const response = await fetch('https://equipe500.tch099.ovh/projet2/api/getutilisateur/' + email);
 
