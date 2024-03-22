@@ -1,0 +1,57 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+.logo {
+    width: 200px;
+}
+
+header{
+    padding: 1rem;
+    background-color: lightgreen;
+    display: flex;
+    justify-content: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formulaire{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 300px;
+}
+
+form * {
+    margin: 5px;
+}
+
+.bouton{
+    background-color: lightblue;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-size: medium;
+}
+
+.bouton:hover{
+    background-color: dodgerblue;
+}
+
+#message_erreur{
+    color: red
+}

@@ -1,0 +1,81 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+.logo {
+    width: 200px;
+}
+h1{
+    width: 50%;
+}
+
+header{
+    padding: 1rem;
+    background-color: lightblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: x-large;
+}
+
+span{
+    color: dodgerblue;
+}
+
+.boutonConnexion{
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-size: medium;
+}
+
+.boutonConnexion:hover{
+    background-color: grey;
+    color: white;
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+article{
+    margin: 1rem;
+    border: 1px solid lightgrey;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+article *:nth-child(3n) {
+    flex-basis: 100%;
+}
+
+img{
+    width: 200px;
+    height: 200px;
+    align-self: center;
+    background-size: 100% 100%;
+    display: block;
+    overflow: hidden;
+}
+
+.description {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+}
+
+.description p{
+    margin: 0;
+}

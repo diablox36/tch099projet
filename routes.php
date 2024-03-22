@@ -18,6 +18,7 @@ catch(PDOException $e) {
 }
 
 get('/projet2', 'index.php');
+get('/locAppart', 'index.html');
 
 // API
 
