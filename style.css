@@ -123,6 +123,6 @@ form * {
     background-color: dodgerblue;
 }
 
-#message_erreur{
+.erreur{
     color: red
 }

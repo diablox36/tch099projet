@@ -3,7 +3,9 @@ const buttonLogin = document.querySelector("#login")
 buttonLogin.addEventListener('click', (event) => {
 
     event.preventDefault();
-    let form = document.querySelector('form');
+    const form = document.querySelector('form');
+    const message = document.querySelector(".erreur");
+
     let formData = new FormData(form);
     let userType = formData.get("#proprietaire").checked ? "propriétaire" : "locataire"
 
@@ -19,8 +21,7 @@ buttonLogin.addEventListener('click', (event) => {
         location.replace("./index.html");
     }
     else {
-        message = document.querySelector("#message_erreur");
-        message.innerHTML = "Email invalide!"
+        message.textContent = "Email invalide!"
     }
 })
 
