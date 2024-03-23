@@ -58,7 +58,7 @@ function ajouterAppartement(appartement, image_url) {
   nouveauAppartement.setAttribute("id", appartement.id)
   nouveauAppartement.addEventListener('click', function(event) {
     const id = this.getAttribute('id')
-    window.location.href = "https://equipe500.tch099.ovh/projet2/LocAppart/details.html?id=" + id
+    window.location.href = "https://equipe500.tch099.ovh/projet2/LocAppart/details?id=" + id
   });
 
   detailTitre.textContent = "Détails"
