@@ -147,6 +147,23 @@ form * {
     font-weight: bold;
 }
 
+.information{
+    margin: 1rem;
+    display: flex;
+}
+
+.information div{
+    margin-left: 1rem;
+}
+
+.information img{
+    height: 600px;
+}
+
+.details{
+    margin: 1rem;
+}
+
 .erreur{
     color: red
 }
