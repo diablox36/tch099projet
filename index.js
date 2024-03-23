@@ -1,19 +1,38 @@
+let listeAppartements = []
+const filtre = document.querySelector(".filtre")
+filtre.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    location.reload();
+  }
+});
+const nombreAppartementsText = document.querySelector(".nombreAppartements")
+let nombreAppartements = 0
+
 document.addEventListener('DOMContentLoaded', fetchAppartements)
 
 async function fetchAppartements() {
-    const response = await fetch("https://equipe500.tch099.ovh/projet2/api/getpropriete")
-    const appartements = await response.json();
+  const response = await fetch("https://equipe500.tch099.ovh/projet2/api/getpropriete")
+  const appartements = await response.json();
+  
+  for (const appartement of appartements) {
+    const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/getfirstimage/" + appartement.id)
+    const images = await responseImage.json();
 
-    
-    for (const appartement of appartements) {
-      const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/getfirstimage/" + appartement.id)
-      const images = await responseImage.json();
-      
-      ajouterAppartement(appartement, images[0]['image_url'])
-    }
+    listeAppartements.push([appartement, images[0]['image_url']])
+  }
+  filterAppartement()
 }
 
-async function fetchFirstImage(id) {
+function filterAppartement() {
+  console.log(listeAppartements)
+  console.log(filtre.value)
+  for (const appartement of listeAppartements) {
+    if (appartement[0].adresse.toLowerCase().includes(filtre.value.toLowerCase()) || appartement[0].arrondissement.toLowerCase().includes(filtre.value.toLowerCase())) {
+      ajouterAppartement(appartement[0], appartement[1])
+      nombreAppartements++
+    }
+    nombreAppartementsText.textContent = nombreAppartements
+  }
 }
 
 const main = document.querySelector("main");

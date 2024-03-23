@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LocAppart</title>
-    <link rel="stylesheet" href="https://equipe500.tch099.ovh/projet2/style.css">
+    <link rel="stylesheet" href="https://equipe500.tch099.ovh/projet2/style.css"> <!--css serveur-->
+    <link rel="stylesheet" href="style.css"> <!--css locale-->
     <script type="module" src="index.js"></script>
 </head>
 <body>
@@ -13,7 +14,10 @@
         <h1>Bienvenu à votre espace <span class="spanBleu">location</span> !</h1>
         <a class="bouton" href="https://equipe500.tch099.ovh/projet2/LocAppart/connexion"  name="connexion">Connexion/Inscription</a>
     </header>
-    <input class="recherche" type="text" id="search" placeholder="Rechercher une ville">
+    <nav class="barreRecherche">
+        <p><span class="nombreAppartements"></span> appartements trouvés</p>
+        <input class="filtre" type="text" id="search" placeholder="Rechercher avec un nom de ville ou rue">
+    </nav>
     <main class="carteMaison">
     </main>
     <footer>
