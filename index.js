@@ -36,9 +36,6 @@ function filterAppartement() {
 const main = document.querySelector("main");
 
 function ajouterAppartement(appartement, image_url) {
-
-  console.log(image_url)
-
   const nouveauAppartement = document.createElement("article")
   const img = document.createElement("img")
   const prix = document.createElement("h1")
