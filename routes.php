@@ -68,11 +68,11 @@ get('/projet2/api/getpropriete', function () {
     echo json_encode($result);
 });
 
-get('/projet2/api/getpropriete/$adresse', function ($adresse) {
+get('/projet2/api/getpropriete/$id', function ($id) {
     global $pdo;
 
-    $req = $pdo->prepare('SELECT * FROM eq2propriete WHERE adresse = :adresse');
-    $req->bindParam('adresse', $adresse);
+    $req = $pdo->prepare('SELECT * FROM eq2propriete WHERE id = :id');
+    $req->bindParam('id', $id);
     $req->execute();
     $result = $req->fetchAll(PDO::FETCH_ASSOC);
 
