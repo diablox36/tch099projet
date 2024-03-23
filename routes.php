@@ -26,6 +26,16 @@ get('/projet2/LocAppart/inscription', 'inscription.html');
 
 // API
 
+get('/projet2/api/getnombrepropriete', function () {
+    global $pdo;
+
+    $req = $pdo->query('SELECT * FROM eq2utilisateur');
+    $result = $req->fetchAll(PDO::FETCH_ASSOC);
+
+    header('Content-type: application/json');
+    echo json_encode($result);
+});
+
 get('/projet2/api/getutilisateur', function () {
     global $pdo;
 
@@ -36,7 +46,6 @@ get('/projet2/api/getutilisateur', function () {
     echo json_encode($result);
 });
 
-//� tester
 get('/projet2/api/getutilisateur/$adresseCouriel', function ($adresseCouriel) {
     global $pdo;
 
@@ -49,7 +58,6 @@ get('/projet2/api/getutilisateur/$adresseCouriel', function ($adresseCouriel) {
     echo json_encode($result);
 });
 
-
 get('/projet2/api/getpropriete', function () {
     global $pdo;
 
@@ -60,7 +68,6 @@ get('/projet2/api/getpropriete', function () {
     echo json_encode($result);
 });
 
-//� tester
 get('/projet2/api/getpropriete/$adresse', function ($adresse) {
     global $pdo;
 
@@ -73,7 +80,7 @@ get('/projet2/api/getpropriete/$adresse', function ($adresse) {
     echo json_encode($result);
 });
 
-get('/projet2/api/getAllImages', function () {
+get('/projet2/api/getallimages', function () {
     global $pdo;
 
     $req = $pdo->query('SELECT * FROM eq2image');
@@ -83,9 +90,7 @@ get('/projet2/api/getAllImages', function () {
     echo json_encode($result);
 });
 
-//retourne tout les images d'une propri�t�
-//� tester
-get('/projet2/api/getImage/$id', function ($id) {
+get('/projet2/api/getimage/$id', function ($id) {
     global $pdo;
 
     $req = $pdo->prepare('SELECT * FROM eq2image WHERE propriete_id = :id');
@@ -97,7 +102,7 @@ get('/projet2/api/getImage/$id', function ($id) {
     echo json_encode($result);
 });
 
-get('/projet2/api/getFirstImage/$id', function ($id) {
+get('/projet2/api/getfirstimage/$id', function ($id) {
     global $pdo;
 
     $req = $pdo->prepare('SELECT * FROM eq2image WHERE propriete_id = :id ORDER BY image_id ASC LIMIT 1');

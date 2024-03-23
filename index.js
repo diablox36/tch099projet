@@ -6,7 +6,7 @@ async function fetchAppartements() {
 
     
     for (const appartement of appartements) {
-      const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/getFirstImage/" + appartement.id)
+      const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/getfirstimage/" + appartement.id)
       const images = await responseImage.json();
       
       ajouterAppartement(appartement, images[0]['image_url'])

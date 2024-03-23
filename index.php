@@ -26,7 +26,7 @@
 	<h2>Documentation API</h2>
       	<a href="https://equipe500.tch099.ovh/projet2/api/getutilisateur">equipe500.tch099.ovh/projet2/api/getutilisateur</a><br>
       	<a href="https://equipe500.tch099.ovh/projet2/api/getpropriete">equipe500.tch099.ovh/projet2/api/getpropriete</a><br>
-        <a href="https://equipe500.tch099.ovh/projet2/api/getAllImages">equipe500.tch099.ovh/projet2/api/getAllImages</a><br>
+        <a href="https://equipe500.tch099.ovh/projet2/api/getallimages">equipe500.tch099.ovh/projet2/api/getallimages</a><br>
 
      	<a href="https://equipe500.tch099.ovh/projet2/LocAppart">Site Web</a>
     </div>

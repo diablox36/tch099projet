@@ -1,6 +1,5 @@
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
 }
 
 .logo {
@@ -60,12 +59,12 @@ input{
     flex-wrap: wrap;
     justify-content: center;
 }
+
 article{
     margin: 1rem;
     border: 1px solid lightgrey;
     display: flex;
     flex-wrap: wrap;
-    
 }
 
 article *:nth-child(3n) {
