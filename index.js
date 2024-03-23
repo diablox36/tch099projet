@@ -24,8 +24,6 @@ async function fetchAppartements() {
 }
 
 function filterAppartement() {
-  console.log(listeAppartements)
-  console.log(filtre.value)
   for (const appartement of listeAppartements) {
     if (appartement[0].adresse.toLowerCase().includes(filtre.value.toLowerCase()) || appartement[0].arrondissement.toLowerCase().includes(filtre.value.toLowerCase())) {
       ajouterAppartement(appartement[0], appartement[1])
