@@ -15,7 +15,6 @@ async function fetchLocation() {
 
 function afficherInformation(appartement, image_url) {
     const image = document.querySelector("img")
-    console.log(image)
     const prix = document.querySelector("#prix")
     const adresse = document.querySelector("#adresse")
     const arrondissement = document.querySelector("#arrondissement")
