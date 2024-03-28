@@ -1,6 +1,16 @@
 const parametreUrl = new URLSearchParams(window.location.search)
 const id = parametreUrl.get('id')
 
+const btnSupprimer = document.querySelector("#supprimer")
+btnSupprimer.addEventListener('click', async(event) => {
+    const response = await fetch("https://equipe500.tch099.ovh/projet2/api/supprimerpropriete/" + id)
+    const result = await response.json();
+
+    if(result['message'] == "success"){
+        location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/proprietaire")
+    }
+})
+
 document.addEventListener('DOMContentLoaded', fetchLocation)
 
 async function fetchLocation() {

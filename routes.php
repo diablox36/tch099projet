@@ -116,6 +116,17 @@ get('/projet2/api/getfirstimage/$id', function ($id) {
     echo json_encode($result);
 });
 
+get('/projet2/api/supprimerpropriete/$id', function ($id) {
+    global $pdo;
+
+    $req = $pdo->prepare('DELETE FROM eq2propriete WHERE id = :id');
+    $req->bindParam('id', $id);
+    $req->execute();
+
+    header('Content-type: application/json');
+    echo json_encode(['message' => 'success']);
+});
+
 //Methodes POST
 
 post('/projet2/api/utilisateurvalide', function() {
@@ -191,3 +202,5 @@ post('/projet2/api/ajouterPropriete', function() {
         echo json_encode(['message' => 'error']);
     }
 });
+
+
