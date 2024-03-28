@@ -24,7 +24,7 @@ btnLogin.addEventListener('click', async (event) => {
         setCookie("typeCompte", result['type_compte'])
 
         if(result['type_compte'] == "locataire"){
-            location.replace("/")
+            location.replace("/LocAppart")
         }
         else if(result['type_compte'] == "proprietaire"){
             location.replace("/proprietaire")
