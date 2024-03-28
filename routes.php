@@ -45,18 +45,6 @@ get('/projet2/api/getutilisateur', function () {
     echo json_encode($result);
 });
 
-get('/projet2/api/getutilisateur/$adresseCouriel', function ($adresseCouriel) {
-    global $pdo;
-
-    $req = $pdo->prepare('SELECT * FROM eq2utilisateur WHERE adresse_courriel = :adresseCouriel');     
-    $req->bindParam('adresseCouriel', $adresseCouriel);
-    $req->execute();
-    $result = $req->fetchAll(PDO::FETCH_ASSOC);
-
-    header('Content-type: application/json');
-    echo json_encode($result);
-});
-
 get('/projet2/api/getpropriete', function () {
     global $pdo;
 
@@ -115,6 +103,34 @@ get('/projet2/api/getfirstimage/$id', function ($id) {
 
 //Methodes POST
 
+post('/projet2/api/userexist', function() {
+    global $pdo;
+
+    $json = file_get_contents('php://input');
+    $data = json_decode($json, true);
+    
+    if(isset($data["adresse_courriel"]) && isset($data["mot_de_passe"])) {
+        $req = $pdo->prepare('SELECT `type_compte` FROM `eq2utilisateur` WHERE `adresse_courriel` = :adresse_courriel AND `mot_de_passe` = :mot_de_passe');
+        $req->execute([
+            "adresse_courriel" => $data["adresse_courriel"],
+            "mot_de_passe" => $data["mot_de_passe"],
+        ]);
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        if(isset($result[0]['type_compte'])) {
+            header('Content-type: application/json');
+            echo json_encode(['message' => 'valid', 'type_compte' => $result[0]['type_compte']]);
+        } else {
+            header('Content-type: application/json');
+            echo json_encode(['message' => 'invalid']);
+        }
+
+    } else {
+        header('Content-type: application/json');
+        echo json_encode(['message' => 'error']);
+    }
+});
+
+
 //� tester
 post('/projet2/api/ajouterUtilisateur', function() {
     global $pdo;
@@ -135,7 +151,7 @@ post('/projet2/api/ajouterUtilisateur', function() {
 
     } else {
         header('Content-type: application/json');
-        echo json_encode(['message' => 'fail']);
+        echo json_encode(['message' => 'error']);
     }
 });
 
@@ -160,6 +176,6 @@ post('/projet2/api/ajouterPropriete', function() {
         ]);
     } else {
         header('Content-type: application/json');
-        echo json_encode(['message' => 'fail']);
+        echo json_encode(['message' => 'error']);
     }
 });
