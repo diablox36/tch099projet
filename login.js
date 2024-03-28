@@ -1,6 +1,7 @@
 const btnLogin = document.querySelector("#login")
 const txtEmail = document.querySelector("#email")
 const txtPassword = document.querySelector("#password")
+const erreur = document.querySelector(".erreur")
 
 btnLogin.addEventListener('click', async (event) => {
     event.preventDefault()
@@ -13,14 +14,18 @@ btnLogin.addEventListener('click', async (event) => {
 
     const response = await fetch('https://equipe500.tch099.ovh/projet2/api/utilisateurvalide', {
         method: "POST",
-        headers: { 
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user)
     })
-    const txt = await response.json();
-    console.log(txt)
+    const result = await response.json();
+    if(result['message'] == "valide"){
+        console.log(result['type_compte'])
+        //location.replace("./index.html")
+    }
+    if(result['message'] == "invalide"){
+        txtPassword.value = ""
+        erreur.textContent = "Email ou mot de passe invalide"
+    }
 })
 
 // location.replace("./login.html")
