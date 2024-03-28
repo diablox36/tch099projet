@@ -7,6 +7,7 @@ body{
     width: 200px;
 }
 
+
 .headerBleu{
     padding: 1rem;
     background-color: lightblue;
@@ -19,7 +20,9 @@ body{
     padding: 1rem;
     background-color: lightgreen;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    font-size: x-large;
 }
 
 .spanBleu{

@@ -21,15 +21,21 @@ btnLogin.addEventListener('click', async (event) => {
     })
     const result = await response.json();
     if(result['message'] == "valide"){
-        erreur.textContent = ""
-        console.log(result['type_compte'])
         setCookie("typeCompte", result['type_compte'])
 
-        //location.replace("./index.html")
+        if(result['type_compte'] == "locataire"){
+            location.replace("/")
+        }
+        else if(result['type_compte'] == "proprietaire"){
+            location.replace("/proprietaire")
+        }
     }
-    if(result['message'] == "invalide"){
+    else if(result['message'] == "invalide"){
         erreur.textContent = "Email ou mot de passe invalide"
         txtPassword.value = ""
+    }
+    else {
+        erreur.textContent = "Erreur dans la demande au serveur"
     }
 })
 

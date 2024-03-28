@@ -22,6 +22,8 @@ get('/projet2/LocAppart', 'index.html');
 get('/projet2/LocAppart/connexion', 'login.html');
 get('/projet2/LocAppart/inscription', 'inscription.html');
 get('/projet2/LocAppart/details', 'details.html');
+get('/projet2/LocAppart/proprietaire', 'proprietaire.html');
+
 
 // API
 
