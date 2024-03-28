@@ -1,3 +1,5 @@
+import { cookies } from './cookies.js'
+
 const btnLogin = document.querySelector("#login")
 const txtEmail = document.querySelector("#email")
 const txtPassword = document.querySelector("#password")
@@ -19,45 +21,16 @@ btnLogin.addEventListener('click', async (event) => {
     })
     const result = await response.json();
     if(result['message'] == "valide"){
+        erreur.textContent = ""
         console.log(result['type_compte'])
+        cookies.setCookie("typeCompte", result['type_compte'])
+
         //location.replace("./index.html")
     }
     if(result['message'] == "invalide"){
-        txtPassword.value = ""
         erreur.textContent = "Email ou mot de passe invalide"
+        txtPassword.value = ""
     }
 })
 
-// location.replace("./login.html")
-
-
-//     event.preventDefault();
-//     const form = document.querySelector('form');
-//     const message = document.querySelector(".erreur");
-
-//     let formData = new FormData(form);
-//     let userType = formData.get("#proprietaire").checked ? "propriétaire" : "locataire"
-
-//     let connectingUser = {
-//         email: formData.get("email"),
-//         password: formData.get("password")
-//     }
-
-//     user = getUser(connectingUser.email);
-
-//     if (user != false && user.mot_de_passe == connectingUser.password) {
-//         //implmenter connexion et autre truc du genre
-//         location.replace("./index.html");
-//     }
-//     else {
-//         message.textContent = "Email invalide!"
-//     }
-// })
-
-// async function getUser(email) {
-//     const response = await fetch('https://equipe500.tch099.ovh/projet2/api/getutilisateur/' + email);
-
-//     return response != [] ? response.json() : false
-
-// }
 
