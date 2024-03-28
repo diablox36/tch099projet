@@ -19,7 +19,6 @@ async function fetchAppartements() {
     const images = await responseImage.json();
 
     console.log(images[0]['image_url'] == undefined)
-    console.log(isset(images[0]['image_url']))
     if(images[0]['image_url'] == undefined) {
       listeAppartements.push([appartement, "https://via.placeholder.com/200"])
     }
