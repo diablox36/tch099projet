@@ -38,10 +38,21 @@ get('/projet2/api/getnombrepropriete', function () {
     echo json_encode($result);
 });
 
-get('/projet2/api/getutilisateur', function () {
+get('/projet2/api/utilisateur', function () {
     global $pdo;
 
     $req = $pdo->query('SELECT * FROM eq2utilisateur');
+    $result = $req->fetchAll(PDO::FETCH_ASSOC);
+
+    header('Content-type: application/json');
+    echo json_encode($result);
+});
+
+get('/projet2/api/utilisateur/$courriel', function ($courriel) {
+    global $pdo;
+
+    $req = $pdo->query('SELECT * FROM eq2utilisateur WHERE adresse_courriel = :courriel');
+    $req->bindParam('courriel', $courriel);
     $result = $req->fetchAll(PDO::FETCH_ASSOC);
 
     header('Content-type: application/json');
