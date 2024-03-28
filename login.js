@@ -1,4 +1,4 @@
-import { cookies } from './cookies.js'
+import { cookies } from '../cookies.js'
 
 const btnLogin = document.querySelector("#login")
 const txtEmail = document.querySelector("#email")
