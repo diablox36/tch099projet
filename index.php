@@ -75,7 +75,7 @@
         <li>adresse_courriel</li>
         <li>mot_de_passe</li>
       </ul>
-      <p>Retourne un message 'valide' et le type compte si l'utilisateur est valide, 'invalide' sinon</p>
+      <p>Retourne un message 'valide' et le type du compte si l'utilisateur est valide, 'invalide' sinon</p>
 
     </div>
   </div>
