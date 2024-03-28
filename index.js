@@ -18,8 +18,8 @@ async function fetchAppartements() {
     const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/getfirstimage/" + appartement.id)
     const images = await responseImage.json();
 
-    console.log(images[0]['image_url'] == undefined)
-    if(images[0]['image_url'] == undefined) {
+    console.log(images == undefined)
+    if(images == undefined) {
       listeAppartements.push([appartement, "https://via.placeholder.com/200"])
     }
     else{
