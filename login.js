@@ -1,4 +1,4 @@
-import { cookies } from '../cookies.js'
+import { setCookie } from '/cookies.js'
 
 const btnLogin = document.querySelector("#login")
 const txtEmail = document.querySelector("#email")
@@ -23,7 +23,7 @@ btnLogin.addEventListener('click', async (event) => {
     if(result['message'] == "valide"){
         erreur.textContent = ""
         console.log(result['type_compte'])
-        cookies.setCookie("typeCompte", result['type_compte'])
+        setCookie("typeCompte", result['type_compte'])
 
         //location.replace("./index.html")
     }
