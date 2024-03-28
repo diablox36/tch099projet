@@ -4,7 +4,7 @@ const id = parametreUrl.get('id')
 document.addEventListener('DOMContentLoaded', fetchLocation)
 
 async function fetchLocation() {
-    const response = await fetch("https://equipe500.tch099.ovh/projet2/api/getpropriete/" + id)
+    const response = await fetch("https://equipe500.tch099.ovh/projet2/api/getproprietebyid/" + id)
     const appartements = await response.json();
 
     const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/getfirstimage/" + id)

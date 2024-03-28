@@ -57,11 +57,23 @@ get('/projet2/api/getpropriete', function () {
     echo json_encode($result);
 });
 
-get('/projet2/api/getpropriete/$id', function ($id) {
+get('/projet2/api/getproprietebyid/$id', function ($id) {
     global $pdo;
 
     $req = $pdo->prepare('SELECT * FROM eq2propriete WHERE id = :id');
     $req->bindParam('id', $id);
+    $req->execute();
+    $result = $req->fetchAll(PDO::FETCH_ASSOC);
+
+    header('Content-type: application/json');
+    echo json_encode($result);
+});
+
+get('/projet2/api/getproprietebyemail/$email', function ($email) {
+    global $pdo;
+
+    $req = $pdo->prepare('SELECT * FROM eq2propriete WHERE proprietaire_adresse_courriel = :email');
+    $req->bindParam('email', $email);
     $req->execute();
     $result = $req->fetchAll(PDO::FETCH_ASSOC);
 
@@ -120,7 +132,7 @@ post('/projet2/api/utilisateurvalide', function() {
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         if(isset($result[0]['type_compte'])) {
             header('Content-type: application/json');
-            echo json_encode(['message' => 'valide', 'type_compte' => $result[0]['type_compte']]);
+            echo json_encode(['message' => 'valide', 'type_compte' => $result[0]['type_compte'], 'adresse_courriel' => $data["adresse_courriel"]]);
         } else {
             header('Content-type: application/json');
             echo json_encode(['message' => 'invalide']);
