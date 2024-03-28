@@ -84,11 +84,12 @@ function ajouterAppartement(appartement, image_url) {
   const arrondissement = document.createElement("p")
 
   nouveauAppartement.setAttribute("id", appartement.id)
-  nouveauAppartement.addEventListener('click', function(event) {
-    const id = this.getAttribute('id')
-    window.location.href = "https://equipe500.tch099.ovh/projet2/LocAppart/details?id=" + id
-  });
-
+  if(compteConnecter) {
+    nouveauAppartement.addEventListener('click', function(event) {
+      const id = this.getAttribute('id')
+      window.location.href = "https://equipe500.tch099.ovh/projet2/LocAppart/details?id=" + id
+    })
+  }
   img.src = image_url
   img.classList.add("imgMaison")
   prix.textContent = appartement.prix + "$ / mois"
