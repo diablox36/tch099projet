@@ -51,7 +51,7 @@ get('/projet2/api/utilisateur', function () {
 get('/projet2/api/utilisateur/$courriel', function ($courriel) {
     global $pdo;
 
-    $req = $pdo->query('SELECT * FROM `eq2utilisateur` WHERE adresse_courriel = :courriel');
+    $req = $pdo->prepare('SELECT * FROM `eq2utilisateur` WHERE adresse_courriel = :courriel');
     $req->bindParam('courriel', $courriel);
     $req->execute();
     $result = $req->fetchAll(PDO::FETCH_ASSOC);
