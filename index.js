@@ -13,6 +13,7 @@ filtre.addEventListener('keydown', function(event) {
 
 const header = document.querySelector("header")
 const btnConnexion = document.querySelector("#btnConnexion")
+const messageConnexion = document.querySelector(".message")
 
 const nombreAppartementsText = document.querySelector(".nombreAppartements")
 let nombreAppartements = 0
@@ -32,6 +33,7 @@ if(checkCookie("typeCompte")) {
     })
     header.appendChild(btn)
     btnConnexion.style.display = "none"
+    messageConnexion.style.display = "none"
   }
 }
 
