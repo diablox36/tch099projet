@@ -12,7 +12,7 @@ filtre.addEventListener('keydown', function(event) {
 })
 
 const header = document.querySelector("header")
-const btnConnexion = document.querySelector(".btnConnexion")
+const btnConnexion = document.querySelector("#btnConnexion")
 
 const nombreAppartementsText = document.querySelector(".nombreAppartements")
 let nombreAppartements = 0
