@@ -25,7 +25,7 @@ btnLogin.addEventListener('click', async (event) => {
         
         console.log(result['type_compte'])
         console.log(result['type_compte'] == "locataire")
-        console.log(result['type_compte'] == "proprietaire")
+        console.log(result['type_compte'] == "propriétaire")
 
         if(result['type_compte'] == "locataire"){
             location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/")
