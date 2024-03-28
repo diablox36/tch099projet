@@ -1,12 +1,40 @@
+import { getCookie } from './cookies.js'
+import { setCookie } from './cookies.js'
+import { checkCookie } from './cookies.js'
+import { deleteCookie } from './cookies.js'
+
 let listeAppartements = []
 const filtre = document.querySelector(".filtre")
 filtre.addEventListener('keydown', function(event) {
   if (event.key === 'Enter') {
     location.reload();
   }
-});
+})
+
+const header = document.querySelector("header")
+const btnConnexion = document.querySelector(".btnConnexion")
+
 const nombreAppartementsText = document.querySelector(".nombreAppartements")
 let nombreAppartements = 0
+let compteConnecter = false
+
+if(checkCookie("typeCompte")) {
+  if(getCookie("typeCompte") == "locataire") {
+    compteConnecter = true
+
+    const btn = document.createElement("button")
+    btn.classList.add("bouton")
+    btn.textContent = "Déconnexion"
+    btn.addEventListener('click', (event) => {
+      deleteCookie("typeCompte")
+      deleteCookie("id")
+      location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/")
+    })
+    header.appendChild(btn)
+    btnConnexion.style.display = "none"
+  }
+}
+
 
 document.addEventListener('DOMContentLoaded', fetchAppartements)
 
@@ -18,8 +46,7 @@ async function fetchAppartements() {
     const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/getfirstimage/" + appartement.id)
     const images = await responseImage.json();
 
-    console.log(images == undefined)
-    if(images == undefined) {
+    if(images.length == 0) {
       listeAppartements.push([appartement, "https://via.placeholder.com/200"])
     }
     else{
@@ -32,7 +59,12 @@ async function fetchAppartements() {
 function filterAppartement() {
   for (const appartement of listeAppartements) {
     if (appartement[0].adresse.toLowerCase().includes(filtre.value.toLowerCase()) || appartement[0].arrondissement.toLowerCase().includes(filtre.value.toLowerCase())) {
-      ajouterAppartement(appartement[0], appartement[1])
+      if(!compteConnecter && nombreAppartements < 12) {
+        ajouterAppartement(appartement[0], appartement[1])
+      }
+      else if(compteConnecter) {
+        ajouterAppartement(appartement[0], appartement[1])
+      }
       nombreAppartements++
     }
     nombreAppartementsText.textContent = nombreAppartements
@@ -44,17 +76,10 @@ const main = document.querySelector("main");
 function ajouterAppartement(appartement, image_url) {
   const nouveauAppartement = document.createElement("article")
   const img = document.createElement("img")
+  const description = document.createElement("div")
   const prix = document.createElement("h1")
   const adresse = document.createElement("p")
   const arrondissement = document.createElement("p")
-  const nombreChambres = document.createElement("p")
-  const superficie = document.createElement("p")
-  const animaux = document.createElement("p")
-  const fumeur = document.createElement("p")
-  const stationnement = document.createElement("p")
-  const description = document.createElement("div")
-  const detail = document.createElement("div")
-  const detailTitre = document.createElement("h2")
 
   nouveauAppartement.setAttribute("id", appartement.id)
   nouveauAppartement.addEventListener('click', function(event) {
@@ -62,31 +87,16 @@ function ajouterAppartement(appartement, image_url) {
     window.location.href = "https://equipe500.tch099.ovh/projet2/LocAppart/details?id=" + id
   });
 
-  detailTitre.textContent = "Détails"
-
   img.src = image_url
   img.classList.add("imgMaison")
   prix.textContent = appartement.prix + "$ / mois"
   adresse.textContent = appartement.adresse
   arrondissement.textContent = appartement.arrondissement
-  nombreChambres.textContent = "Nombre de chambres: " + appartement.nb_chambres
-  superficie.textContent = "Superficie: " + appartement.superficie + " m²"
-  animaux.textContent = "Animaux: " + (appartement.animaux ? "Oui" : "Non")
-  fumeur.textContent = "Fumeur: " + (appartement.fumeur ? "Oui" : "Non")
-  stationnement.textContent = "Stationnement: " + (appartement.stationnement ? "Oui" : "Non")
 
   description.classList.add("description")
   description.appendChild(prix)
   description.appendChild(adresse)
   description.appendChild(arrondissement)
-
-  detail.classList.add("detail")
-  detail.appendChild(detailTitre)
-  detail.appendChild(superficie)
-  detail.appendChild(nombreChambres)
-  detail.appendChild(stationnement)
-  detail.appendChild(animaux)
-  detail.appendChild(fumeur)
 
   nouveauAppartement.appendChild(img);
   nouveauAppartement.appendChild(description);

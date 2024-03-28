@@ -71,11 +71,7 @@ article{
     border: 1px solid lightgrey;
     display: flex;
     flex-wrap: wrap;
-    
-}
-
-article *:nth-child(3n) {
-    flex-basis: 100%;
+    width: 400px;
 }
 
 .imgMaison{
@@ -88,14 +84,13 @@ article *:nth-child(3n) {
 }
 
 .description {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    white-space: nowrap;
+    padding-left: 10px;
     display: flex;
     flex-direction: column;
 }
 
 .description p{
+    width: 190px;
     margin: 0;
 }
 
@@ -172,4 +167,11 @@ article *:nth-child(3n) {
 
 .erreur{
     color: red
+}
+
+.message{
+    color: green;
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
 }
