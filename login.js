@@ -24,10 +24,10 @@ btnLogin.addEventListener('click', async (event) => {
         setCookie("typeCompte", result['type_compte'])
 
         if(result['type_compte'] == "locataire"){
-            location.replace("/LocAppart")
+            location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/")
         }
         else if(result['type_compte'] == "proprietaire"){
-            location.replace("/proprietaire")
+            location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/proprietaire")
         }
     }
     else if(result['message'] == "invalide"){

@@ -4,7 +4,7 @@ const btnDeconnexion = document.querySelector("#deconnexion")
 
 btnDeconnexion.addEventListener('click', (event) => {
     deleteCookie("typeCompte")
-    location.replace("/")
+    location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/")
 })
 
 
