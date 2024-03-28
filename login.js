@@ -6,13 +6,17 @@ btnLogin.addEventListener('click', async (event) => {
     event.preventDefault()
 
     const user = {
-        adresse_courriel: txtEmail.textContent,
-        mot_de_passe: txtPassword.textContent
+        adresse_courriel: txtEmail.value,
+        mot_de_passe: txtPassword.value
     }
+    console.log(user)
 
     const response = await fetch('https://equipe500.tch099.ovh/projet2/api/userexist', {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+        },
         body: JSON.stringify(user)
     })
     const txt = await response.json();
