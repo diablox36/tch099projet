@@ -170,7 +170,6 @@ article{
 }
 
 .message{
-    color: green;
     display: flex;
     justify-content: center;
     font-size: x-large;
