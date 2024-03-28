@@ -28,16 +28,6 @@ get('/projet2/LocAppart/proprietaire', 'proprietaire.html');
 
 // API
 
-get('/projet2/api/getnombrepropriete', function () {
-    global $pdo;
-
-    $req = $pdo->query('SELECT * FROM eq2utilisateur');
-    $result = $req->fetchAll(PDO::FETCH_ASSOC);
-
-    header('Content-type: application/json');
-    echo json_encode($result);
-});
-
 get('/projet2/api/utilisateur', function () {
     global $pdo;
 
@@ -168,7 +158,7 @@ post('/projet2/api/utilisateurvalide', function() {
     }
 });
 
-post('/projet2/api/ajouterUtilisateur', function() {
+post('/projet2/api/ajouterutilisateur', function() {
     global $pdo;
 
     $json = file_get_contents('php://input');
@@ -191,7 +181,7 @@ post('/projet2/api/ajouterUtilisateur', function() {
     }
 });
 
-post('/projet2/api/ajouterPropriete', function() {
+post('/projet2/api/ajouterpropriete', function() {
     global $pdo;
 
     $json = file_get_contents('php://input');

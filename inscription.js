@@ -14,7 +14,7 @@ document.querySelector("register").addEventListener('click', (event) => {
         type_compte: formData.get("proprietaire").checked ? "propriétaire" : "locataire"
     }
 
-    fetch('https://equipe500.tch099.ovh/projet2/api/ajouterUtilisateur',
+    fetch('https://equipe500.tch099.ovh/projet2/api/ajouterutilisateur',
         {
             method: "POST",
             headers: { "Content-Type": "application/json" },
