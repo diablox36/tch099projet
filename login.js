@@ -22,11 +22,14 @@ btnLogin.addEventListener('click', async (event) => {
     const result = await response.json();
     if(result['message'] == "valide"){
         setCookie("typeCompte", result['type_compte'])
-
+        console.log(result['type_compte'] == "locataire")
+        console.log(result['type_compte'] == "proprietaire")
+        
         if(result['type_compte'] == "locataire"){
             location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/")
         }
         else if(result['type_compte'] == "proprietaire"){
+            console.log("proprietaire")
             location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/proprietaire")
         }
     }
