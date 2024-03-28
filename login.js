@@ -2,7 +2,6 @@ const btnLogin = document.querySelector("#login")
 const txtEmail = document.querySelector("#email")
 const txtPassword = document.querySelector("#password")
 
-
 btnLogin.addEventListener('click', async (event) => {
     event.preventDefault()
 
