@@ -11,7 +11,7 @@ btnLogin.addEventListener('click', async (event) => {
     }
     console.log(user)
 
-    const response = await fetch('https://equipe500.tch099.ovh/projet2/api/userexist', {
+    const response = await fetch('https://equipe500.tch099.ovh/projet2/api/utilisateurvalide', {
         method: "POST",
         headers: { 
             "Content-Type": "application/json",

@@ -103,7 +103,7 @@ get('/projet2/api/getfirstimage/$id', function ($id) {
 
 //Methodes POST
 
-post('/projet2/api/userexist', function() {
+post('/projet2/api/utilisateurvalide', function() {
     global $pdo;
 
     $json = file_get_contents('php://input');
@@ -118,10 +118,10 @@ post('/projet2/api/userexist', function() {
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         if(isset($result[0]['type_compte'])) {
             header('Content-type: application/json');
-            echo json_encode(['message' => 'valid', 'type_compte' => $result[0]['type_compte']]);
+            echo json_encode(['message' => 'valide', 'type_compte' => $result[0]['type_compte']]);
         } else {
             header('Content-type: application/json');
-            echo json_encode(['message' => 'invalid']);
+            echo json_encode(['message' => 'invalide']);
         }
 
     } else {
@@ -130,8 +130,6 @@ post('/projet2/api/userexist', function() {
     }
 });
 
-
-//� tester
 post('/projet2/api/ajouterUtilisateur', function() {
     global $pdo;
 
@@ -155,7 +153,6 @@ post('/projet2/api/ajouterUtilisateur', function() {
     }
 });
 
-//� tester
 post('/projet2/api/ajouterPropriete', function() {
     global $pdo;
 
