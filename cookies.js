@@ -1,8 +1,7 @@
-function setCookie(cookieName, cookieValue) {
+export function setCookie(cookieName, cookieValue) {
     document.cookie = cookieName + "=" + cookieValue
   }
-  
-  function getCookie(cookieName) {
+export function getCookie(cookieName) {
     const cookies = document.cookie.split(';')
     for(let i = 0; i < cookies.length; i++) {
       cookies[i] = cookies[i].trim() 
@@ -12,8 +11,7 @@ function setCookie(cookieName, cookieValue) {
       }
     }
   }
-  
-  function checkCookie(cookieName) {
+export function checkCookie(cookieName) {
     const cookieValue = getCookie(cookieName)
     if(cookieValue === undefined) {
       return false
@@ -21,7 +19,7 @@ function setCookie(cookieName, cookieValue) {
       return true
     }
   }
-  function deleteCookie(cookieName) {
+export function deleteCookie(cookieName) {
     if (checkCookie(cookieName)) {
       document.cookie = cookieName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;'
     }
