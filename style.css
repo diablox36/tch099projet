@@ -8,21 +8,24 @@ body{
 }
 
 
-.headerBleu{
+.headerDefault{
     padding: 1rem;
-    background-color: lightblue;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: x-large;
 }
-.headerVert{
+.headerCentrer{
     padding: 1rem;
-    background-color: lightgreen;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: x-large;
+    justify-content: center;
+}
+
+.vert{
+    background-color: lightgreen;
+}
+.bleu{
+    background-color: lightblue;
 }
 
 .spanBleu{
