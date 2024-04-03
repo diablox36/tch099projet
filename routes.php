@@ -235,7 +235,7 @@ post('/projet2/api/ajouterpropriete', function () {
     }
 });
 
-post('/projet2/api/updatepropriete/$id', function ($id) {
+post('/projet2/api/updatepropriete', function () {
     global $pdo;
 
     $json = file_get_contents('php://input');
@@ -253,7 +253,7 @@ post('/projet2/api/updatepropriete/$id', function ($id) {
             "fumeur" => $data["fumeur"],
             "stationnement" => $data["stationnement"],
             "description" => $data["description"],
-            "id" => $id
+            "id" => $data["id"]
         ]);
     } else {
         header('Content-type: application/json');

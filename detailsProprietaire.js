@@ -74,9 +74,10 @@ btnRetour.addEventListener('onclick', async (event) => {
         fumeur: fumeur.value == "Oui",
         stationnement: stationnement.value.split(' ')[0],
         description: description.value,
+        id: id
     }
 
-    await fetch('https://equipe500.tch099.ovh/projet2/api/updatepropriete/' + id,
+    await fetch('https://equipe500.tch099.ovh/projet2/api/updatepropriete',
         {
             method: "POST",
             headers: { "Content-Type": "application/json" },
