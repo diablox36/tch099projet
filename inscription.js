@@ -1,7 +1,5 @@
 // Pour enregistrer un nouvel utilisateur
-document.querySelector("register").addEventListener('click', async (event) => {
-
-    event.preventDefault();
+document.querySelector("#inscription").addEventListener('click', async (event) => {
     let form = document.querySelector('form');
     let formData = new FormData(form);
 
