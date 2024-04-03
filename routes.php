@@ -242,7 +242,7 @@ post('/projet2/api/updatepropriete', function () {
     $data = json_decode($json, true);
 
     if (isset ($data["adresse"]) && isset ($data["nb_chambres"]) && isset ($data["superficie"]) && isset ($data["prix"]) && isset ($data["arrondissement"]) && isset ($data["animaux"]) && isset ($data["fumeur"]) && isset ($data["stationnement"]) && isset ($data["description"]) && isset ($data["id"])) {
-        $req = $pdo->prepare('UPDATE `eq2propriete` SET `adresse`= :adresse ,`nb_chambres`= :nb_chambres ,`superficie`= :superficie,`prix`= :prix,`arrondissement`= :arrondissement,`animaux`= :animaux,`fumeur`= :fumeur,`stationnement`= :stationnement,`description`=:description, WHERE `id` = :id');
+        $req = $pdo->prepare('UPDATE `eq2propriete` SET `adresse`= :adresse ,`nb_chambres`= :nb_chambres ,`superficie`= :superficie,`prix`= :prix,`arrondissement`= :arrondissement,`animaux`= :animaux,`fumeur`= :fumeur,`stationnement`= :stationnement,`description`=:description WHERE `id` = :id');
         $req->execute([
             "adresse" => $data["adresse"],
             "nb_chambres" => $data["nb_chambres"],
