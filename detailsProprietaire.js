@@ -49,3 +49,4 @@ function afficherInformation(appartement, image_url) {
     description.textContent = appartement.description
     courrielProprietaire.textContent = appartement.proprietaire_adresse_courriel
 }
+
