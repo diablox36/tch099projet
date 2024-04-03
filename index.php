@@ -45,13 +45,13 @@
       <p>Retourne la première image de la propriété ayant l'id $id</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/supprimerpropriete/id">projet2/api/supprimerpropriete/id</a><br>
       <p>Supprime la propriété ayant l'id $id</p>
-      <a href="https://equipe500.tch099.ovh/projet2/api/ordennerpropriete/prixCroissant">projet2/api/ordennerpropriete/prixCroissant</a><br>
+      <a href="https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/prixCroissant">projet2/api/ordonnerpropriete/prixCroissant</a><br>
       <p>Retourne la liste de toutes les propriétés ordonnées par leur prix croissant</p>
-      <a href="https://equipe500.tch099.ovh/projet2/api/ordennerpropriete/prixDecroissant">projet2/api/ordennerpropriete/prixDecroissant</a><br>
+      <a href="https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/prixDecroissant">projet2/api/ordonnerpropriete/prixDecroissant</a><br>
       <p>Retourne la liste de toutes les propriétés ordonnées par leur prix décroissant</p>
-      <a href="https://equipe500.tch099.ovh/projet2/api/ordennerpropriete/arrondissementCroissant">projet2/api/ordennerpropriete/prixDecroissant</a><br>
+      <a href="https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/arrondissementCroissant">projet2/api/ordonnerpropriete/prixDecroissant</a><br>
       <p>Retourne la liste de toutes les propriétés ordonnées par leur arrondissement croissant</p>
-      <a href="https://equipe500.tch099.ovh/projet2/api/ordennerpropriete/arrondissementDecroissant">projet2/api/ordennerpropriete/arrondissementDecroissant</a><br>
+      <a href="https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/arrondissementDecroissant">projet2/api/ordonnerpropriete/arrondissementDecroissant</a><br>
       <p>Retourne la liste de toutes les propriétés ordonnées par leur arrondissement décroissant</p>
 
       <h3>Méthodes POST</h3>
