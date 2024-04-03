@@ -1,6 +1,7 @@
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
+    background-color: whitesmoke;
 }
 
 .logo {
@@ -24,14 +25,14 @@ body{
 .vert{
     background-color: lightgreen;
 }
-.bleu{
+.bleuPale{
     background-color: lightblue;
 }
 
-.spanBleu{
+.bleu{
     color: dodgerblue;
 }
-.spanOrange{
+.orange{
     color: orange;
 }
 

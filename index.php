@@ -23,9 +23,9 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-sm-12 doc">
-      <a href="https://equipe500.tch099.ovh/projet2/LocAppart">Site Web</a>
-	    <h2>Documentation API</h2>
+      <a class="fs-1" href="https://equipe500.tch099.ovh/projet2/LocAppart">Site Web</a>
 
+	    <h2>Documentation API</h2>
       <h3>Méthodes GET</h3>
       <a href="https://equipe500.tch099.ovh/projet2/api/utilisateur">projet2/api/utilisateur</a><br>
       <p>Retourne la liste de tous les utilisateurs</p>
@@ -76,14 +76,12 @@
         <li>mot_de_passe</li>
       </ul>
       <p>Retourne un message 'valide' et le type du compte si l'utilisateur est valide, 'invalide' sinon</p>
-
     </div>
   </div>
 </div>
 
 <div class="mt-5 p-4 bg-dark text-white text-center">
-<p>&copy; 2024 École de Technologie Supérieure, Montréal</p>
+  <p>&copy; 2024 École de Technologie Supérieure, Montréal</p>
 </div>
-
 </body>
 </html>
