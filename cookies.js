@@ -12,7 +12,5 @@ export function getCookie(cookieName) {
     }
   }
 export function deleteCookie(cookieName) {
-    if (checkCookie(cookieName)) {
-      document.cookie = cookieName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;'
-    }
+    document.cookie = cookieName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;'
   }
