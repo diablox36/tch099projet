@@ -8,6 +8,7 @@ const nombreAppartementsText = document.querySelector(".nombreAppartements")
 const main = document.querySelector("main");
 const selectTrier = document.querySelector("select")
 const filtre = document.querySelector(".filtre")
+const btn = document.createElement("button")
 
 let listeAppartements = []
 let compteConnecter = false
@@ -16,12 +17,12 @@ let filtreText = ""
 if(getCookie("typeCompte") == "locataire") {
   compteConnecter = true
 
-  const btn = document.createElement("button")
   btn.classList.add("bouton")
   btn.textContent = "Déconnexion"
   btn.addEventListener('click', (event) => {
-    deleteCookie("typeCompte")
     deleteCookie("id")
+    deleteCookie("typeCompte")
+    compteConnecter = false
     location.reload()
   })
   header.appendChild(btn)
