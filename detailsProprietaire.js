@@ -77,6 +77,8 @@ btnRetour.addEventListener('onclick', async (event) => {
         id: id
     }
 
+    console.log(update)
+
     await fetch('https://equipe500.tch099.ovh/projet2/api/updatepropriete',
         {
             method: "POST",
@@ -84,5 +86,5 @@ btnRetour.addEventListener('onclick', async (event) => {
             body: JSON.stringify(update)
         })
 
-    location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/proprietaire")
+    //location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/proprietaire")
 })
