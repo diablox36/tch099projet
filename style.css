@@ -61,7 +61,6 @@ body {
 
 input {
     padding: 10px 20px;
-    font-weight: bold;
     border-radius: 10px;
 }
 
@@ -155,7 +154,6 @@ form {
 .barreRecherche input {
     width: 300px;
     margin-top: 0.4rem;
-    font-weight: normal;
 }
 
 .barreRecherche div {
@@ -200,4 +198,14 @@ select {
     border-radius: 10px;
     border-width: 2px;
     margin: 0.4rem 0;
+}
+
+textarea{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border-width: 2px;
+    resize: none;
+    display: flex;
+    width: 600px;
+    height: 4rem;
 }

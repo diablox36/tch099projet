@@ -22,6 +22,7 @@ async function fetchLocation() {
 
     afficherInformation(appartements[0], images[0]['image_url'])
 }
+afficherInformation()
 
 function afficherInformation(appartement, image_url) {
     const image = document.querySelector("img")
@@ -38,14 +39,17 @@ function afficherInformation(appartement, image_url) {
 
     image.src = image_url
     image.alt = appartement.adresse
-    prix.value = appartement.prix + "$ / mois"
+    prix.value = appartement.prix
     adresse.value = appartement.adresse
     arrondissement.value = appartement.arrondissement
-    nombreChambres.value = appartement.nb_chambres + " chambres"
-    superficie.value = appartement.superficie + " m²"
-    animaux.value = appartement.animaux ? "Oui" : "Non"
-    fumeur.value = appartement.fumeur ? "Oui" : "Non"
-    stationnement.value = appartement.stationnement + " stationnement(s)"
+    nombreChambres.value = appartement.nb_chambres
+    superficie.value = appartement.superficie
+    fumeur.value = true //appartement.fumeur ? "Oui" : "Non"
+    animaux.value = false //appartement.animaux ? "Oui" : "Non"
+    console.log(animaux.value)
+    console.log(fumeur.value)
+
+    stationnement.value = appartement.stationnement
     description.value = appartement.description
     courrielProprietaire.textContent = appartement.proprietaire_adresse_courriel
 }
@@ -70,8 +74,8 @@ btnRetour.addEventListener('click', async (event) => {
         superficie: superficie.value.split(' ')[0],
         prix: prix.value.split('$')[0],
         arrondissement: arrondissement,
-        animaux: animaux.value == "Oui" ? 1 : 0,
-        fumeur: fumeur.value == "Oui" ? 1 : 0,
+        animaux: animaux.checked ? 1 : 0,
+        fumeur: fumeur.checked ? 1 : 0,
         stationnement: stationnement.value.split(' ')[0],
         description: description.value,
         id: id

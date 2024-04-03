@@ -39,8 +39,10 @@ async function fetchAppartements(url) {
   for (const appartement of appartements) {
     const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/getfirstimage/" + appartement.id)
     const images = await responseImage.json();
-
-    listeAppartements.push([appartement, images[0]['image_url']])
+    console.log(appartement.id)
+    if(images.length > 0) {
+      listeAppartements.push([appartement, images[0]['image_url']])
+    }
   }
   filtreAppartements()
 }
