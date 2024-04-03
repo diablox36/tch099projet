@@ -220,7 +220,9 @@ post('/projet2/api/ajouterpropriete', function () {
         $req->execute([
             "adresse" => $data["adresse"],
             "nb_chambres" => $data["nb_chambres"],
+            "superficie" =>$data["superficie"],
             "prix" => $data["prix"],
+            "arrondissement" =>$data["arrondissement"],
             "animaux" => $data["animaux"],
             "fumeur" => $data["fumeur"],
             "stationnement" => $data["stationnement"],
@@ -239,17 +241,18 @@ post('/projet2/api/updatepropriete', function () {
     $json = file_get_contents('php://input');
     $data = json_decode($json, true);
 
-    if (isset ($data["adresse"]) && isset ($data["nb_chambres"]) && isset ($data["superficie"]) && isset ($data["prix"]) && isset ($data["arrondissement"]) && isset ($data["animaux"]) && isset ($data["fumeur"]) && isset ($data["stationnement"]) && isset ($data["description"]) && isset ($data["proprietaire_adresse_courriel"])) {
-        $req = $pdo->prepare('UPDATE `eq2propriete` SET `adresse`= :adresse ,`nb_chambres`= :nb_chambres ,`superficie`= :superficie,`prix`= :prix,`arrondissement`= :arrondissement,`animaux`= :animaux,`fumeur`= :fumeur,`stationnement`= :stationnement,`description`=:description,`proprietaire_adresse_courriel`= :proprietaire_adresse_courriel WHERE `id` = :id');
+    if (isset ($data["adresse"]) && isset ($data["nb_chambres"]) && isset ($data["superficie"]) && isset ($data["prix"]) && isset ($data["arrondissement"]) && isset ($data["animaux"]) && isset ($data["fumeur"]) && isset ($data["stationnement"]) && isset ($data["description"]) && isset ($data["id"])) {
+        $req = $pdo->prepare('UPDATE `eq2propriete` SET `adresse`= :adresse ,`nb_chambres`= :nb_chambres ,`superficie`= :superficie,`prix`= :prix,`arrondissement`= :arrondissement,`animaux`= :animaux,`fumeur`= :fumeur,`stationnement`= :stationnement,`description`=:description, WHERE `id` = :id');
         $req->execute([
             "adresse" => $data["adresse"],
             "nb_chambres" => $data["nb_chambres"],
+            "superficie" =>$data["superficie"],
             "prix" => $data["prix"],
+            "arrondissement" =>$data["arrondissement"],
             "animaux" => $data["animaux"],
             "fumeur" => $data["fumeur"],
             "stationnement" => $data["stationnement"],
             "description" => $data["description"],
-            "proprietaire_adresse_courriel" => $data["proprietaire_adresse_courriel"],
             "id" => $data["id"]
         ]);
     } else {
