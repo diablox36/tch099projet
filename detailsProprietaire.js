@@ -52,6 +52,8 @@ function afficherInformation(appartement, image_url) {
 
 const btnRetour = document.querySelector('#retour')
 btnRetour.addEventListener('onclick', async (event) => {
+    event.preventDefault();
+
     const prix = document.querySelector("#prix")
     const adresse = document.querySelector("#adresse")
     const arrondissement = document.querySelector("#arrondissement")
