@@ -1,4 +1,3 @@
-import { get } from 'http'
 import { getCookie } from './cookies.js'
 import { deleteCookie } from './cookies.js'
 
