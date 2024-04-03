@@ -20,8 +20,6 @@ if(getCookie("typeCompte") == "locataire") {
   btn.classList.add("bouton")
   btn.textContent = "Déconnexion"
   btn.addEventListener('click', (event) => {
-    console.log(getCookie("id"))
-    console.log(getCookie("typeCompte"))
     deleteCookie("id")
     deleteCookie("typeCompte")
     compteConnecter = false
