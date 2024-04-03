@@ -1,16 +1,5 @@
 const parametreUrl = new URLSearchParams(window.location.search)
 const id = parametreUrl.get('id')
-const image = document.querySelector("img")
-const prix = document.querySelector("#prix")
-const adresse = document.querySelector("#adresse")
-const arrondissement = document.querySelector("#arrondissement")
-const nombreChambres = document.querySelector("#nombreChambres")
-const superficie = document.querySelector("#superficie")
-const animaux = document.querySelector("#animaux")
-const fumeur = document.querySelector("#fumeur")
-const stationnement = document.querySelector("#stationnement")
-const description = document.querySelector("#description")
-const courrielProprietaire = document.querySelector("#courrielProprietaire")
 
 const btnSupprimer = document.querySelector("#supprimer")
 btnSupprimer.addEventListener('click', async (event) => {
@@ -35,6 +24,17 @@ async function fetchLocation() {
 }
 
 function afficherInformation(appartement, image_url) {
+    const image = document.querySelector("img")
+    const prix = document.querySelector("#prix")
+    const adresse = document.querySelector("#adresse")
+    const arrondissement = document.querySelector("#arrondissement")
+    const nombreChambres = document.querySelector("#nombreChambres")
+    const superficie = document.querySelector("#superficie")
+    const animaux = document.querySelector("#animaux")
+    const fumeur = document.querySelector("#fumeur")
+    const stationnement = document.querySelector("#stationnement")
+    const description = document.querySelector("#description")
+    const courrielProprietaire = document.querySelector("#courrielProprietaire")
 
     image.src = image_url
     image.alt = appartement.adresse
@@ -54,6 +54,15 @@ const btnRetour = document.querySelector('#retour')
 btnRetour.addEventListener('onclick', async (event) => {
     event.preventDefault();
 
+    const prix = document.querySelector("#prix")
+    const adresse = document.querySelector("#adresse")
+    const arrondissement = document.querySelector("#arrondissement")
+    const nombreChambres = document.querySelector("#nombreChambres")
+    const superficie = document.querySelector("#superficie")
+    const animaux = document.querySelector("#animaux")
+    const fumeur = document.querySelector("#fumeur")
+    const stationnement = document.querySelector("#stationnement")
+    const description = document.querySelector("#description")
 
     let update = {
         adresse: adresse.value,
