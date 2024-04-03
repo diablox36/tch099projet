@@ -50,3 +50,38 @@ function afficherInformation(appartement, image_url) {
     courrielProprietaire.textContent = appartement.proprietaire_adresse_courriel
 }
 
+const btnRetour = document.querySelector('#retour')
+
+btnRetour.addEventListener('onclick', async () => {
+    const prix = document.querySelector("#prix")
+    const adresse = document.querySelector("#adresse")
+    const arrondissement = document.querySelector("#arrondissement")
+    const nombreChambres = document.querySelector("#nombreChambres")
+    const superficie = document.querySelector("#superficie")
+    const animaux = document.querySelector("#animaux")
+    const fumeur = document.querySelector("#fumeur")
+    const stationnement = document.querySelector("#stationnement")
+    const description = document.querySelector("#description")
+
+    let update = {
+        adresse: adresse.value,
+        nb_chambres: nombreChambres.value.split(' ')[0],
+        superficie: superficie.value.split(' ')[0],
+        prix: prix.value.split('$')[0],
+        arrondissement: arrondissement,
+        animaux: animaux.value == "oui",
+        fumeur: fumeur.value == "oui",
+        stationnement: stationnement.value.split(' ')[0],
+        description: description.value,
+        id: id
+    }
+
+    await fetch('https://equipe500.tch099.ovh/projet2/api/updatepropriete',
+        {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(update)
+        })
+
+    location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/proprietaire")
+})
