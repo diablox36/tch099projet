@@ -2,11 +2,11 @@ const parametreUrl = new URLSearchParams(window.location.search)
 const id = parametreUrl.get('id')
 
 const btnSupprimer = document.querySelector("#supprimer")
-btnSupprimer.addEventListener('click', async (event) => {
+btnSupprimer.addEventListener('click', async(event) => {
     const response = await fetch("https://equipe500.tch099.ovh/projet2/api/supprimerpropriete/" + id)
     const result = await response.json();
 
-    if (result['message'] == "success") {
+    if(result['message'] == "success"){
         location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/proprietaire")
     }
 })
@@ -35,7 +35,7 @@ function afficherInformation(appartement, image_url) {
     const stationnement = document.querySelector("#stationnement")
     const description = document.querySelector("#description")
     const courrielProprietaire = document.querySelector("#courrielProprietaire")
-
+    
     image.src = image_url
     image.alt = appartement.adresse
     prix.value = appartement.prix + "$ / mois"
@@ -47,6 +47,6 @@ function afficherInformation(appartement, image_url) {
     fumeur.value = appartement.fumeur ? "Oui" : "Non"
     stationnement.value = appartement.stationnement + " stationnement(s)"
     description.value = appartement.description
-    courrielProprietaire.value = appartement.proprietaire_adresse_courriel
+    courrielProprietaire.textContent = appartement.proprietaire_adresse_courriel
 }
 
