@@ -69,10 +69,12 @@ input{
 }
 article{
     margin: 1rem;
-    border: 1px solid lightgrey;
+    border: 2px solid black;
+    border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
     width: 400px;
+    background-color: white;
 }
 
 .imgMaison{
@@ -82,6 +84,7 @@ article{
     background-size: 100% 100%;
     display: block;
     overflow: hidden;
+    border-radius: 7px;
 }
 
 .description {
@@ -131,24 +134,28 @@ form{
 }
 
 .barreRecherche{
-    margin-top: 1rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border: 2px solid black;
     border-radius: 10px;
+    margin: 10px;
 }
 
 .barreRecherche p{
+    margin: 0;
+    margin-left: 1rem;
     font-size: large;
-    margin-left: 0.5rem;
 }
 
 .barreRecherche input{
-    margin: 0.5rem;
     width: 300px;
+    margin-top: 0.4rem;
+    font-weight: normal;
+}
+
+.barreRecherche div{
+    margin-right: 0.4rem;
 }
 
 .barreRecherche span{
@@ -180,4 +187,12 @@ form{
     display: flex;
     justify-content: center;
     font-size: x-large;
+}
+
+select{
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border-width: 2px;
+    margin: 0.4rem 0;
 }

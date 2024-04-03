@@ -19,7 +19,16 @@
     </header>
     <nav class="barreRecherche">
         <p><span class="nombreAppartements"></span> appartements trouvés</p>
-        <input class="filtre" type="text" id="search" placeholder="Rechercher avec un nom de ville ou rue">
+        <div>
+            <input class="filtre" type="text" id="search" placeholder="Rechercher avec un nom de ville ou rue">
+            <select id="select">
+                <option value="">Trier par:</option>
+                <option value="prixCroissant">Prix Croissant</option>
+                <option value="prixDecroissant">Prix Décroissant</option>
+                <option value="arrondissementCroissant">Arrondissement Croissant</option>
+                <option value="arrondissementDecroissant">Arrondissement Décroissant</option>
+            </select>
+        </div>
     </nav>
     <main class="carteMaison">
     </main>

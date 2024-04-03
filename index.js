@@ -37,11 +37,10 @@ if(checkCookie("typeCompte")) {
   }
 }
 
+document.addEventListener('DOMContentLoaded', fetchAppartements("https://equipe500.tch099.ovh/projet2/api/getpropriete"))
 
-document.addEventListener('DOMContentLoaded', fetchAppartements)
-
-async function fetchAppartements() {
-  const response = await fetch("https://equipe500.tch099.ovh/projet2/api/getpropriete")
+async function fetchAppartements(url) {
+  const response = await fetch(url)
   const appartements = await response.json();
   
   for (const appartement of appartements) {
@@ -74,15 +73,16 @@ function filterAppartement() {
 }
 
 const main = document.querySelector("main");
+const selectTrier = document.querySelector("select")
+selectTrier.onchange = (event) => {
+    let selectText = event.target.value;
+    console.log(selectText);
+    listeAppartements.clear();
+    fetchAppartements("https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/" + selectText)
+}
 
 function ajouterAppartement(appartement, image_url) {
   const nouveauAppartement = document.createElement("article")
-  const img = document.createElement("img")
-  const description = document.createElement("div")
-  const prix = document.createElement("h1")
-  const adresse = document.createElement("p")
-  const arrondissement = document.createElement("p")
-
   nouveauAppartement.setAttribute("id", appartement.id)
   if(compteConnecter) {
     nouveauAppartement.addEventListener('click', function(event) {
@@ -90,6 +90,13 @@ function ajouterAppartement(appartement, image_url) {
       window.location.href = "https://equipe500.tch099.ovh/projet2/LocAppart/details?id=" + id
     })
   }
+
+  const img = document.createElement("img")
+  const description = document.createElement("div")
+  const prix = document.createElement("h1")
+  const adresse = document.createElement("p")
+  const arrondissement = document.createElement("p")
+
   img.src = image_url
   img.classList.add("imgMaison")
   prix.textContent = appartement.prix + "$ / mois"

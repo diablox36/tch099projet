@@ -49,7 +49,7 @@
       <p>Retourne la liste de toutes les propriétés ordonnées par leur prix croissant</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/prixDecroissant">projet2/api/ordonnerpropriete/prixDecroissant</a><br>
       <p>Retourne la liste de toutes les propriétés ordonnées par leur prix décroissant</p>
-      <a href="https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/arrondissementCroissant">projet2/api/ordonnerpropriete/prixDecroissant</a><br>
+      <a href="https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/arrondissementCroissant">projet2/api/ordonnerpropriete/arrondissementCroissant</a><br>
       <p>Retourne la liste de toutes les propriétés ordonnées par leur arrondissement croissant</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/arrondissementDecroissant">projet2/api/ordonnerpropriete/arrondissementDecroissant</a><br>
       <p>Retourne la liste de toutes les propriétés ordonnées par leur arrondissement décroissant</p>
