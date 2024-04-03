@@ -1,6 +1,4 @@
 import { getCookie } from './cookies.js'
-import { setCookie } from './cookies.js'
-import { checkCookie } from './cookies.js'
 import { deleteCookie } from './cookies.js'
 
 const header = document.querySelector("header")
@@ -15,22 +13,20 @@ let listeAppartements = []
 let compteConnecter = false
 let filtreText = ""
 
-if(checkCookie("typeCompte")) {
-  if(getCookie("typeCompte") == "locataire") {
-    compteConnecter = true
+if(getCookie("typeCompte") == "locataire") {
+  compteConnecter = true
 
-    const btn = document.createElement("button")
-    btn.classList.add("bouton")
-    btn.textContent = "Déconnexion"
-    btn.addEventListener('click', (event) => {
-      deleteCookie("typeCompte")
-      deleteCookie("id")
-      location.reload()
-    })
-    header.appendChild(btn)
-    btnConnexion.style.display = "none"
-    messageConnexion.style.display = "none"
-  }
+  const btn = document.createElement("button")
+  btn.classList.add("bouton")
+  btn.textContent = "Déconnexion"
+  btn.addEventListener('click', (event) => {
+    deleteCookie("typeCompte")
+    deleteCookie("id")
+    location.reload()
+  })
+  header.appendChild(btn)
+  btnConnexion.style.display = "none"
+  messageConnexion.style.display = "none"
 }
 
 document.addEventListener('DOMContentLoaded', fetchAppartements("https://equipe500.tch099.ovh/projet2/api/getpropriete"))
