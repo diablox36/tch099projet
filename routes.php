@@ -22,8 +22,8 @@ get('/projet2/LocAppart', 'index.html');
 get('/projet2/LocAppart/connexion', 'login.html');
 get('/projet2/LocAppart/inscription', 'inscription.html');
 get('/projet2/LocAppart/details', 'details.html');
-get('/projet2/LocAppart/detailsProprietaire', 'detailsProprietaire.html');
 get('/projet2/LocAppart/proprietaire', 'proprietaire.html');
+get('/projet2/LocAppart/detailsProprietaire', 'detailsProprietaire.html');
 
 
 // API
@@ -127,6 +127,33 @@ get('/projet2/api/supprimerpropriete/$id', function ($id) {
 
     header('Content-type: application/json');
     echo json_encode(['message' => 'success']);
+});
+
+post('/projet2/api/ordennerpropriete/$ordre', function($ordre) {
+    global $pdo;
+
+    switch($ordre) {
+        case "prixCroissant":
+            $req = $pdo->query('SELECT * FROM eq2propriete ORDER BY prix ASC');
+            $result = $req->fetchAll(PDO::FETCH_ASSOC);
+            break;
+        case "prixDecroissant":
+            $req = $pdo->query('SELECT * FROM eq2propriete ORDER BY prix DESC');
+            $result = $req->fetchAll(PDO::FETCH_ASSOC);
+            break;
+        case "arrondissementCroissant":
+            $req = $pdo->query('SELECT * FROM eq2propriete ORDER BY arrondissement ASC');
+            $result = $req->fetchAll(PDO::FETCH_ASSOC);
+            break;
+        case "arrondissementDecroissant":
+            $req = $pdo->query('SELECT * FROM eq2propriete ORDER BY arrondissement DESC');
+            $result = $req->fetchAll(PDO::FETCH_ASSOC);
+            break;
+        default:
+            $result = ["message" => "ordre invalide"];
+    }
+    header('Content-type: application/json');
+    echo json_encode($result);
 });
 
 //Methodes POST

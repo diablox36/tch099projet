@@ -32,7 +32,7 @@
       <a href="https://equipe500.tch099.ovh/projet2/api/utilisateur/email">projet2/api/utilisateur/email</a><br>
       <p>Retourne les informations de l'utilisateur ayant l'adresse courriel $email</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/getpropriete">projet2/api/getpropriete</a><br>
-      <p>Retourne la liste de toutes les propriétés</p>
+      <p>Retourne la liste de toutes les propriétés ordonnées par leur id</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/getproprietebyid/id">projet2/api/getproprietebyid/id</a><br>
       <p>Retourne les informations de la propriété ayant l'id $id</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/getproprietebyemail/email">projet2/api/getproprietebyemail/email</a><br>
@@ -45,6 +45,14 @@
       <p>Retourne la première image de la propriété ayant l'id $id</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/supprimerpropriete/id">projet2/api/supprimerpropriete/id</a><br>
       <p>Supprime la propriété ayant l'id $id</p>
+      <a href="https://equipe500.tch099.ovh/projet2/api/ordennerpropriete/prixCroissant">projet2/api/ordennerpropriete/prixCroissant</a><br>
+      <p>Retourne la liste de toutes les propriétés ordonnées par leur prix croissant</p>
+      <a href="https://equipe500.tch099.ovh/projet2/api/ordennerpropriete/prixDecroissant">projet2/api/ordennerpropriete/prixDecroissant</a><br>
+      <p>Retourne la liste de toutes les propriétés ordonnées par leur prix décroissant</p>
+      <a href="https://equipe500.tch099.ovh/projet2/api/ordennerpropriete/arrondissementCroissant">projet2/api/ordennerpropriete/prixDecroissant</a><br>
+      <p>Retourne la liste de toutes les propriétés ordonnées par leur arrondissement croissant</p>
+      <a href="https://equipe500.tch099.ovh/projet2/api/ordennerpropriete/arrondissementDecroissant">projet2/api/ordennerpropriete/arrondissementDecroissant</a><br>
+      <p>Retourne la liste de toutes les propriétés ordonnées par leur arrondissement décroissant</p>
 
       <h3>Méthodes POST</h3>
       <a href="https://equipe500.tch099.ovh/projet2/api/ajouterpropriete">projet2/api/ajouterpropriete</a><br>
