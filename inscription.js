@@ -22,5 +22,5 @@ document.querySelector("#inscription").addEventListener('click', async (event) =
         body: JSON.stringify(utilisateur)
     })
     
-    location.replace("./login.html")
+    location.replace("./connexion")
 })
