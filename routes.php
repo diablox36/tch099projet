@@ -131,6 +131,7 @@ get('/projet2/api/supprimerpropriete/$id', function ($id) {
 
 post('/projet2/api/ordennerpropriete/$ordre', function($ordre) {
     global $pdo;
+    $result = null;
 
     switch($ordre) {
         case "prixCroissant":
@@ -152,6 +153,7 @@ post('/projet2/api/ordennerpropriete/$ordre', function($ordre) {
         default:
             $result = ["message" => "ordre invalide"];
     }
+
     header('Content-type: application/json');
     echo json_encode($result);
 });
