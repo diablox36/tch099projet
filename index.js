@@ -3,21 +3,17 @@ import { setCookie } from './cookies.js'
 import { checkCookie } from './cookies.js'
 import { deleteCookie } from './cookies.js'
 
-let listeAppartements = []
-const filtre = document.querySelector(".filtre")
-filtre.addEventListener('keydown', function(event) {
-  if (event.key === 'Enter') {
-    location.reload();
-  }
-})
-
 const header = document.querySelector("header")
 const btnConnexion = document.querySelector("#btnConnexion")
 const messageConnexion = document.querySelector(".message")
-
 const nombreAppartementsText = document.querySelector(".nombreAppartements")
-let nombreAppartements = 0
+const main = document.querySelector("main");
+const selectTrier = document.querySelector("select")
+const filtre = document.querySelector(".filtre")
+
+let listeAppartements = []
 let compteConnecter = false
+let filtreText = ""
 
 if(checkCookie("typeCompte")) {
   if(getCookie("typeCompte") == "locataire") {
@@ -29,7 +25,7 @@ if(checkCookie("typeCompte")) {
     btn.addEventListener('click', (event) => {
       deleteCookie("typeCompte")
       deleteCookie("id")
-      location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/")
+      location.reload()
     })
     header.appendChild(btn)
     btnConnexion.style.display = "none"
@@ -47,48 +43,59 @@ async function fetchAppartements(url) {
     const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/getfirstimage/" + appartement.id)
     const images = await responseImage.json();
 
-    if(images.length == 0) {
-      listeAppartements.push([appartement, "https://via.placeholder.com/200"])
-    }
-    else{
-      listeAppartements.push([appartement, images[0]['image_url']])
-    }
+    listeAppartements.push([appartement, images[0]['image_url']])
   }
-  filterAppartement()
+  filtreAppartements()
 }
-
-function filterAppartement() {
+function filtreAppartements() {
+  let numAppartements = 0
+  while (main.hasChildNodes()) {
+    main.removeChild(main.firstChild)
+  }
   for (const appartement of listeAppartements) {
-    if (appartement[0].adresse.toLowerCase().includes(filtre.value.toLowerCase()) || appartement[0].arrondissement.toLowerCase().includes(filtre.value.toLowerCase())) {
-      if(!compteConnecter && nombreAppartements < 12) {
+    if(compteConnecter) {
+      if(appartement[0].adresse.toLowerCase().includes(filtreText.toLowerCase()) || appartement[0].arrondissement.toLowerCase().includes(filtreText.toLowerCase())) {
         ajouterAppartement(appartement[0], appartement[1])
+        numAppartements++
       }
-      else if(compteConnecter) {
-        ajouterAppartement(appartement[0], appartement[1])
-      }
-      nombreAppartements++
     }
-    nombreAppartementsText.textContent = nombreAppartements
+    else if(numAppartements < 12) {
+      if(appartement[0].adresse.toLowerCase().includes(filtreText.toLowerCase()) || appartement[0].arrondissement.toLowerCase().includes(filtreText.toLowerCase())) {
+        ajouterAppartement(appartement[0], appartement[1])
+        numAppartements++
+      }
+    }
+  }
+  nombreAppartementsText.textContent = numAppartements
+}
+
+
+selectTrier.onchange = (event) => {
+  let selectText = event.target.value;
+  listeAppartements = []
+  while (main.hasChildNodes()) {
+    main.removeChild(main.firstChild)
+  }
+  if (selectText === "") {
+    fetchAppartements("https://equipe500.tch099.ovh/projet2/api/getpropriete")
+  }
+  else {
+    fetchAppartements("https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/" + selectText);
   }
 }
 
-const main = document.querySelector("main");
-const selectTrier = document.querySelector("select")
-selectTrier.onchange = (event) => {
-    let selectText = event.target.value;
-    console.log(selectText);
-    listeAppartements.clear();
-    fetchAppartements("https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/" + selectText)
+filtre.onchange = (event) => {
+  filtreText = event.target.value;
+  filtreAppartements()
 }
 
 function ajouterAppartement(appartement, image_url) {
-  const nouveauAppartement = document.createElement("article")
+  let nouveauAppartement = document.createElement("article")
   nouveauAppartement.setAttribute("id", appartement.id)
   if(compteConnecter) {
-    nouveauAppartement.addEventListener('click', function(event) {
-      const id = this.getAttribute('id')
-      window.location.href = "https://equipe500.tch099.ovh/projet2/LocAppart/details?id=" + id
-    })
+    nouveauAppartement.addEventListener('click', event => {
+      window.location.href = "https://equipe500.tch099.ovh/projet2/LocAppart/details?id=" + appartement.id
+     })
   }
 
   const img = document.createElement("img")
