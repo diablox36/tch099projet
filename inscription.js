@@ -5,7 +5,7 @@ const tel = document.querySelector("#tel")
 const radio = document.querySelector("#proprietaire")
 
 // Pour enregistrer un nouvel utilisateur
-document.querySelector("#inscription").addEventListener('click', async (event) => {
+document.querySelector("#inscription").addEventListener('click', async () => {
     let utilisateur = {
         adresse_courriel: email.value,
         prenom: nom.value.split(' ')[0],

@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__.'/router.php';
+require_once __DIR__ . '/router.php';
 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST');
@@ -11,9 +11,8 @@ $pdo = null;
 
 try {
     $db = 'mysql:host=localhost:3306;dbname=equipe500';
-    $pdo = new PDO($db , $DBuser, $DBpass);
-} 
-catch(PDOException $e) {
+    $pdo = new PDO($db, $DBuser, $DBpass);
+} catch (PDOException $e) {
     echo "Error: Unable to connect to MySQL. Error:\n $e";
 }
 
@@ -129,11 +128,11 @@ get('/projet2/api/supprimerpropriete/$id', function ($id) {
     echo json_encode(['message' => 'success']);
 });
 
-get('/projet2/api/ordonnerpropriete/$ordre', function($ordre) {
+get('/projet2/api/ordonnerpropriete/$ordre', function ($ordre) {
     global $pdo;
     $result = null;
 
-    switch($ordre) {
+    switch ($ordre) {
         case "prixCroissant":
             $req = $pdo->query('SELECT * FROM eq2propriete ORDER BY prix ASC');
             $result = $req->fetchAll(PDO::FETCH_ASSOC);
@@ -160,20 +159,20 @@ get('/projet2/api/ordonnerpropriete/$ordre', function($ordre) {
 
 //Methodes POST
 
-post('/projet2/api/utilisateurvalide', function() {
+post('/projet2/api/utilisateurvalide', function () {
     global $pdo;
 
     $json = file_get_contents('php://input');
     $data = json_decode($json, true);
-    
-    if(isset($data["adresse_courriel"]) && isset($data["mot_de_passe"])) {
+
+    if (isset ($data["adresse_courriel"]) && isset ($data["mot_de_passe"])) {
         $req = $pdo->prepare('SELECT `type_compte` FROM `eq2utilisateur` WHERE `adresse_courriel` = :adresse_courriel AND `mot_de_passe` = :mot_de_passe');
         $req->execute([
             "adresse_courriel" => $data["adresse_courriel"],
             "mot_de_passe" => $data["mot_de_passe"],
         ]);
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
-        if(isset($result[0]['type_compte'])) {
+        if (isset ($result[0]['type_compte'])) {
             header('Content-type: application/json');
             echo json_encode(['message' => 'valide', 'type_compte' => $result[0]['type_compte'], 'adresse_courriel' => $data["adresse_courriel"]]);
         } else {
@@ -187,13 +186,13 @@ post('/projet2/api/utilisateurvalide', function() {
     }
 });
 
-post('/projet2/api/ajouterutilisateur', function() {
+post('/projet2/api/ajouterutilisateur', function () {
     global $pdo;
 
     $json = file_get_contents('php://input');
     $data = json_decode($json, true);
-    
-    if(isset($data["adresse_courriel"]) && isset($data["mot_de_passe"]) && isset($data["nom"]) && isset($data["prenom"]) && isset($data["telephone"]) && isset($data["type_compte"])) {
+
+    if (isset ($data["adresse_courriel"]) && isset ($data["mot_de_passe"]) && isset ($data["nom"]) && isset ($data["prenom"]) && isset ($data["telephone"]) && isset ($data["type_compte"])) {
         $req = $pdo->prepare('INSERT INTO `eq2utilisateur`(`adresse_courriel`, `mot_de_passe`, `nom`, `prenom`, `telephone`, `type_compte`) VALUES (:adresse_courriel, :mot_de_passe, :nom, :prenom, :telephone, :type_compte)');
         $req->execute([
             "adresse_courriel" => $data["adresse_courriel"],
@@ -210,13 +209,13 @@ post('/projet2/api/ajouterutilisateur', function() {
     }
 });
 
-post('/projet2/api/ajouterpropriete', function() {
+post('/projet2/api/ajouterpropriete', function () {
     global $pdo;
 
     $json = file_get_contents('php://input');
     $data = json_decode($json, true);
-    
-    if(isset($data["adresse"]) && isset($data["nb_chambres"]) && isset($data["superficie"]) && isset($data["prix"]) && isset($data["arrondissement"]) && isset($data["animaux"]) && isset($data["fumeur"]) && isset($data["stationnement"]) && isset($data["description"]) && isset($data["proprietaire_adresse_courriel"])) {
+
+    if (isset ($data["adresse"]) && isset ($data["nb_chambres"]) && isset ($data["superficie"]) && isset ($data["prix"]) && isset ($data["arrondissement"]) && isset ($data["animaux"]) && isset ($data["fumeur"]) && isset ($data["stationnement"]) && isset ($data["description"]) && isset ($data["proprietaire_adresse_courriel"])) {
         $req = $pdo->prepare('INSERT INTO `eq2propriete`(`adresse`, `nb_chambres`, `superficie`, `prix`, `arrondissement`, `animaux`, `fumeur`, `stationnement`, `description`, `proprietaire_adresse_courriel`) VALUES (:adresse, :nb_chambres, :superficie, :prix, :arrondissement, :animaux, :fumeur:, :stationnement, :description, :proprietaire_adresse_courriel)');
         $req->execute([
             "adresse" => $data["adresse"],
@@ -234,4 +233,27 @@ post('/projet2/api/ajouterpropriete', function() {
     }
 });
 
+post('/projet2/api/updatepropriete', function () {
+    global $pdo;
 
+    $json = file_get_contents('php://input');
+    $data = json_decode($json, true);
+
+    if (isset ($data["adresse"]) && isset ($data["nb_chambres"]) && isset ($data["superficie"]) && isset ($data["prix"]) && isset ($data["arrondissement"]) && isset ($data["animaux"]) && isset ($data["fumeur"]) && isset ($data["stationnement"]) && isset ($data["description"]) && isset ($data["proprietaire_adresse_courriel"])) {
+        $req = $pdo->prepare('UPDATE `eq2propriete` SET `adresse`= :adresse ,`nb_chambres`= :nb_chambres ,`superficie`= :superficie,`prix`= :prix,`arrondissement`= :arrondissement,`animaux`= :animaux,`fumeur`= :fumeur,`stationnement`= :stationnement,`description`=:description,`proprietaire_adresse_courriel`= :proprietaire_adresse_courriel WHERE `id` = :id');
+        $req->execute([
+            "adresse" => $data["adresse"],
+            "nb_chambres" => $data["nb_chambres"],
+            "prix" => $data["prix"],
+            "animaux" => $data["animaux"],
+            "fumeur" => $data["fumeur"],
+            "stationnement" => $data["stationnement"],
+            "description" => $data["description"],
+            "proprietaire_adresse_courriel" => $data["proprietaire_adresse_courriel"],
+            "id" => $data["id"]
+        ]);
+    } else {
+        header('Content-type: application/json');
+        echo json_encode(['message' => 'error']);
+    }
+});
