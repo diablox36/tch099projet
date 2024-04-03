@@ -129,7 +129,7 @@ get('/projet2/api/supprimerpropriete/$id', function ($id) {
     echo json_encode(['message' => 'success']);
 });
 
-post('/projet2/api/ordonnerpropriete/$ordre', function($ordre) {
+get('/projet2/api/ordonnerpropriete/$ordre', function($ordre) {
     global $pdo;
     $result = null;
 
