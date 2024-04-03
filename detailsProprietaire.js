@@ -51,7 +51,7 @@ function afficherInformation(appartement, image_url) {
 }
 
 const btnRetour = document.querySelector('#retour')
-btnRetour.addEventListener('onclick', async (event) => {
+btnRetour.addEventListener('click', async (event) => {
     event.preventDefault();
 
     const prix = document.querySelector("#prix")
