@@ -48,7 +48,7 @@ function filtreAppartements() {
   }
 
   for (const appartement of listeAppartements) {
-    if(!compteConnecter && numAppartements > 12) {
+    if(!compteConnecter && numAppartements >= 12) {
       break
     }
     ajouterAppartement(appartement[0], appartement[1])
