@@ -255,7 +255,7 @@ post('/projet2/api/ajouterpropriete', function () {
         ]);
 
         header('Content-type: application/json');
-        echo json_encode(['message' => 'success']);
+        echo json_encode(['message' => 'success', 'id' => $pdo->lastInsertId()]);
     } else {
         header('Content-type: application/json');
         echo json_encode(['message' => 'error']);

@@ -11,6 +11,12 @@ const stationnement = document.querySelector("#stationnement")
 const description = document.querySelector("#description")
 const maxNumberOfImages = 6
 
+document.querySelector("#retour").addEventListener('click', (event) => {
+    location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/proprietaire")
+})
+
+
+
 document.querySelector("#enregistrer").addEventListener('click', async (event) => {
     let propriete = {
         prix: prix.value,
@@ -31,8 +37,7 @@ document.querySelector("#enregistrer").addEventListener('click', async (event) =
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(propriete)
     })
-    //const result = await response.json();
-    const result = await response.text()
+    const result = await response.json()
     console.log(result)
 
     for (let i = 1; i <= maxNumberOfImages; i++) {
@@ -44,8 +49,10 @@ document.querySelector("#enregistrer").addEventListener('click', async (event) =
             await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterimage', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ image_url: image.value })
+                body: JSON.stringify({ image_url: image.value, propriete_id: result['id']})
             })
+            const text = await response.text()
+            console.log(text)
         }
     }
 })

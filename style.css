@@ -23,10 +23,16 @@ body {
     display: flex;
     justify-content: center;
 }
-
 .headerVerticale {
     display: flex;
     flex-direction: row;
+}
+.headerStart {
+    display: flex;
+    justify-content: start;
+}
+.headerStart *{
+    margin: 1rem 0 1rem 1rem;
 }
 
 .vert {
@@ -228,16 +234,6 @@ textarea{
     width: 300px;
 }
 
-.ajoutPropriete{
-    display: flex;
-    justify-content: start;
-}
-.ajoutPropriete a{
-    margin: 1rem;
-}
-.ajoutPropriete button{
-    margin: 1rem 0;
-}
 .messageProprietaire{
     margin-left: 1rem;
 }
