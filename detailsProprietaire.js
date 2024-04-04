@@ -99,6 +99,9 @@ btnRetour.addEventListener('click', async (event) => {
     await fetch('https://equipe500.tch099.ovh/projet2/api/supprimerimagespropriete/' + id)
 
     for (const image of listeImages) {
+        if (image.value == "") {
+            break
+        }
         await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterimage', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
