@@ -76,8 +76,8 @@ btnRetour.addEventListener('click', async (event) => {
         superficie: superficie.value.split(' ')[0],
         prix: prix.value.split('$')[0],
         arrondissement: arrondissement,
-        animaux: animaux.checked ? 1 : 0,
-        fumeur: fumeur.checked ? 1 : 0,
+        animaux: animauxOui.checked ? 1 : 0,
+        fumeur: fumeurOui.checked ? 1 : 0,
         stationnement: stationnement.value.split(' ')[0],
         description: description.value,
         id: id
