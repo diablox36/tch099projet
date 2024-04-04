@@ -65,6 +65,7 @@
         <li>prenom</li>
         <li>telephone</li>
         <li>type_compte</li>
+      </ul>
       <a href="https://equipe500.tch099.ovh/projet2/api/ajouterpropriete">projet2/api/ajouterpropriete</a><br>
       <p>Ajoute une propriété avec les paramètres suivant:</p>
       <ul>
