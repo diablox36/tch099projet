@@ -1,5 +1,3 @@
-import { setCookie } from './cookies.js'
-
 const btnLogin = document.querySelector("#login")
 const txtEmail = document.querySelector("#email")
 const txtPassword = document.querySelector("#password")
@@ -23,8 +21,6 @@ btnLogin.addEventListener('click', async (event) => {
     if(result['message'] == "valide"){
         sessionStorage.setItem('type_compte', result['type_compte'])
         sessionStorage.setItem('courriel', result['adresse_courriel'])
-        //setCookie("typeCompte", result['type_compte'])
-        //setCookie("id", result['adresse_courriel'])
 
         if(result['type_compte'] == "locataire"){
             location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/")

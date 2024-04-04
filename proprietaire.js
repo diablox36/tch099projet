@@ -1,17 +1,13 @@
-import { getCookie } from './cookies.js'
-import { deleteCookie } from './cookies.js'
-
 const btnDeconnexion = document.querySelector("#deconnexion")
 btnDeconnexion.addEventListener('click', (event) => {
-    deleteCookie("typeCompte")
-    deleteCookie("id")
-    location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/")
+  sessionStorage.clear()
+  location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/")
 })
 
 document.addEventListener('DOMContentLoaded', fetchAppartements)
 
 async function fetchAppartements() {
-    const response = await fetch("https://equipe500.tch099.ovh/projet2/api/getproprietebyemail/" + getCookie("id"))
+    const response = await fetch("https://equipe500.tch099.ovh/projet2/api/getproprietebyemail/" + sessionStorage.getItem("courriel"))
     const appartements = await response.json();
   
     for (const appartement of appartements) {

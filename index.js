@@ -1,6 +1,3 @@
-import { getCookie } from './cookies.js'
-import { deleteCookie } from './cookies.js'
-
 const header = document.querySelector("header")
 const btnConnexion = document.querySelector("#btnConnexion")
 const messageConnexion = document.querySelector(".message")
@@ -14,15 +11,14 @@ let listeAppartements = []
 let compteConnecter = false
 let filtreText = ""
 
-if(getCookie("typeCompte") == "locataire") {
+if(sessionStorage.getItem("type_compte") == "locataire") {
   compteConnecter = true
 
   btn.classList.add("bouton")
   btn.textContent = "Déconnexion"
   btn.addEventListener('click', (event) => {
-    deleteCookie("id")
-    deleteCookie("typeCompte")
     compteConnecter = false
+    sessionStorage.clear()
     location.reload()
   })
   header.appendChild(btn)
