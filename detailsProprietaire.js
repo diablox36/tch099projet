@@ -75,7 +75,7 @@ btnRetour.addEventListener('click', async (event) => {
         nb_chambres: nombreChambres.value.split(' ')[0],
         superficie: superficie.value.split(' ')[0],
         prix: prix.value.split('$')[0],
-        arrondissement: arrondissement,
+        arrondissement: arrondissement.value,
         animaux: animauxOui.checked ? 1 : 0,
         fumeur: fumeurOui.checked ? 1 : 0,
         stationnement: stationnement.value.split(' ')[0],
