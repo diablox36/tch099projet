@@ -238,7 +238,7 @@ post('/projet2/api/ajouterpropriete', function () {
     $data = json_decode($json, true);
 
     if (isset ($data["adresse"]) && isset ($data["nb_chambres"]) && isset ($data["superficie"]) && isset ($data["prix"]) && isset ($data["arrondissement"]) && isset ($data["animaux"]) && isset ($data["fumeur"]) && isset ($data["stationnement"]) && isset ($data["description"]) && isset ($data["proprietaire_adresse_courriel"])) {
-        $req = $pdo->prepare('INSERT INTO `eq2propriete`(`adresse`, `nb_chambres`, `superficie`, `prix`, `arrondissement`, `animaux`, `fumeur`, `stationnement`, `description`, `proprietaire_adresse_courriel`) VALUES (:adresse, :nb_chambres, :superficie, :prix, :arrondissement, :animaux, :fumeur:, :stationnement, :description, :proprietaire_adresse_courriel)');
+        $req = $pdo->prepare('INSERT INTO `eq2propriete`(`adresse`, `nb_chambres`, `superficie`, `prix`, `arrondissement`, `animaux`, `fumeur`, `stationnement`, `description`, `proprietaire_adresse_courriel`) VALUES (:adresse, :nb_chambres, :superficie, :prix, :arrondissement, :animaux, :fumeur, :stationnement, :description, :proprietaire_adresse_courriel)');
         $req->execute([
             "adresse" => $data["adresse"],
             "nb_chambres" => $data["nb_chambres"],
