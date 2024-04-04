@@ -22,19 +22,21 @@ async function fetchLocation() {
 
     afficherInformation(appartements[0], images[0]['image_url'])
 }
+const image = document.querySelector("img")
+const prix = document.querySelector("#prix")
+const adresse = document.querySelector("#adresse")
+const arrondissement = document.querySelector("#arrondissement")
+const nombreChambres = document.querySelector("#nombreChambres")
+const superficie = document.querySelector("#superficie")
+const fumeurOui = document.querySelector("#fumeurOui")
+const fumeurNon = document.querySelector("#fumeurNon")
+const animauxOui = document.querySelector("#animauxOui")
+const animauxNon = document.querySelector("#animauxNon")
+const stationnement = document.querySelector("#stationnement")
+const description = document.querySelector("#description")
+const courrielProprietaire = document.querySelector("#courrielProprietaire")
 
 function afficherInformation(appartement, image_url) {
-    const image = document.querySelector("img")
-    const prix = document.querySelector("#prix")
-    const adresse = document.querySelector("#adresse")
-    const arrondissement = document.querySelector("#arrondissement")
-    const nombreChambres = document.querySelector("#nombreChambres")
-    const superficie = document.querySelector("#superficie")
-    const animaux = document.querySelector("#animaux")
-    const fumeur = document.querySelector("#fumeur")
-    const stationnement = document.querySelector("#stationnement")
-    const description = document.querySelector("#description")
-    const courrielProprietaire = document.querySelector("#courrielProprietaire")
 
     image.src = image_url
     image.alt = appartement.adresse
@@ -43,11 +45,22 @@ function afficherInformation(appartement, image_url) {
     arrondissement.value = appartement.arrondissement
     nombreChambres.value = appartement.nb_chambres
     superficie.value = appartement.superficie
-    fumeur.value = true //appartement.fumeur ? "Oui" : "Non"
-    animaux.value = false //appartement.animaux ? "Oui" : "Non"
-    console.log(animaux.value)
-    console.log(fumeur.value)
-
+    if (appartement.fumeur) {
+        fumeurOui.checked = true
+        fumeurNon.checked = false
+    }
+    else {
+        fumeurOui.checked = false
+        fumeurNon.checked = true
+    }
+    if (appartement.animaux) {
+        animauxOui.checked = true
+        animauxNon.checked = false
+    }
+    else {
+        animauxOui.checked = false
+        animauxNon.checked = true
+    }
     stationnement.value = appartement.stationnement
     description.value = appartement.description
     courrielProprietaire.textContent = appartement.proprietaire_adresse_courriel
@@ -56,16 +69,6 @@ function afficherInformation(appartement, image_url) {
 const btnRetour = document.querySelector('#retour')
 btnRetour.addEventListener('click', async (event) => {
     event.preventDefault();
-
-    const prix = document.querySelector("#prix")
-    const adresse = document.querySelector("#adresse")
-    const arrondissement = document.querySelector("#arrondissement")
-    const nombreChambres = document.querySelector("#nombreChambres")
-    const superficie = document.querySelector("#superficie")
-    const animaux = document.querySelector("#animaux")
-    const fumeur = document.querySelector("#fumeur")
-    const stationnement = document.querySelector("#stationnement")
-    const description = document.querySelector("#description")
 
     let update = {
         adresse: adresse.value,
