@@ -128,16 +128,27 @@ get('/projet2/api/supprimerpropriete/$id', function ($id) {
     echo json_encode(['message' => 'success']);
 });
 
-get('/projet2/api/supprimerimage/$id', function ($id) {
+get('/projet2/api/supprimerimage/$idImage', function ($idImage) {
     global $pdo;
 
-    $req = $pdo->prepare('DELETE FROM eq2image WHERE propriete = :id');
-    $req->bindParam('id', $id);
+    $req = $pdo->prepare('DELETE FROM eq2image WHERE image_id = :id');
+    $req->bindParam('id', $idImage);
     $req->execute();
 
     header('Content-type: application/json');
     echo json_encode(['message' => 'success']);
 });
+get('/projet2/api/supprimerimagespropriete/$idPropriete', function ($idPropriete) {
+    global $pdo;
+
+    $req = $pdo->prepare('DELETE FROM eq2image WHERE propriete_id = :id');
+    $req->bindParam('id', $idPropriete);
+    $req->execute();
+
+    header('Content-type: application/json');
+    echo json_encode(['message' => 'success']);
+});
+
 
 get('/projet2/api/ordonnerpropriete/$ordre', function ($ordre) {
     global $pdo;

@@ -46,6 +46,8 @@
       <a href="https://equipe500.tch099.ovh/projet2/api/supprimerpropriete/id">projet2/api/supprimerpropriete/id</a><br>
       <p>Supprime la propriété ayant l'id $id</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/supprimerimage/id">projet2/api/supprimerimage/id</a><br>
+      <p>Supprime l'image ayant l'id $id</p>
+      <a href="https://equipe500.tch099.ovh/projet2/api/supprimerimagespropriete/id">projet2/api/supprimerimagespropriete/id</a><br>
       <p>Supprime toutes les images de la propriété ayant l'id $id</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/prixCroissant">projet2/api/ordonnerpropriete/prixCroissant</a><br>
       <p>Retourne la liste de toutes les propriétés ordonnées par leur prix croissant</p>
