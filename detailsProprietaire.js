@@ -99,15 +99,13 @@ btnRetour.addEventListener('click', async (event) => {
     await fetch('https://equipe500.tch099.ovh/projet2/api/supprimerimagespropriete/' + id)
 
     for (const image of listeImages) {
-        if (image.value == "") {
-            break
+        if (image.value > 0) {
+            await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterimage', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({image_url: image.value, propriete_id: id})
+            })
         }
-        await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterimage', {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({image_url: image.value, propriete_id: id})
-        })
-        
     }
     location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/proprietaire")
 })
