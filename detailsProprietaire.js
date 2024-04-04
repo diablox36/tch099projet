@@ -1,6 +1,8 @@
 const parametreUrl = new URLSearchParams(window.location.search)
 let id = parametreUrl.get('id')
-let oldImages = null
+const maxNumberOfImages = 6
+let oldImages 
+id = 1
 
 const btnSupprimer = document.querySelector("#supprimer")
 btnSupprimer.addEventListener('click', async (event) => {
@@ -20,8 +22,7 @@ async function fetchLocation() {
 
     const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/getimage/" + id)
     oldImages = await responseImage.json();
-    console.log(oldImages)
-    afficherInformation(appartements[0], oldImages)
+    afficherInformation(appartements[0])
 }
 const prix = document.querySelector("#prix")
 const adresse = document.querySelector("#adresse")
@@ -34,15 +35,8 @@ const animauxOui = document.querySelector("#animauxOui")
 const animauxNon = document.querySelector("#animauxNon")
 const stationnement = document.querySelector("#stationnement")
 const description = document.querySelector("#description")
-const image1 = document.querySelector("#image1")
-const image2 = document.querySelector("#image2")
-const image3 = document.querySelector("#image3")
-const image4 = document.querySelector("#image4")
-const image5 = document.querySelector("#image5")
-const image6 = document.querySelector("#image6")
-const listeImages = [image1, image2, image3, image4, image5, image6]
 
-function afficherInformation(appartement, images) {
+function afficherInformation(appartement) {
 
     prix.value = appartement.prix
     adresse.value = appartement.adresse
@@ -67,9 +61,10 @@ function afficherInformation(appartement, images) {
     }
     stationnement.value = appartement.stationnement
     description.value = appartement.description
-
-    for (let i = 0; i < images.length; i++) {
-        listeImages[i].value = images[i]['image_url']
+    
+    for (let i = 0; i < oldImages.length; i++) {
+        const image = document.querySelector(`#image${i}`)
+        image.value = oldImages[i]['image_url']
     }
 }
 
@@ -89,23 +84,52 @@ btnRetour.addEventListener('click', async (event) => {
         description: description.value,
         id: id,
     }
-    let newImages = []
 
     await fetch('https://equipe500.tch099.ovh/projet2/api/updatepropriete', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatepropriete)
     })
+    
+    let newImages = []
+    for (let i = 0; i < maxNumberOfImages; i++) {
+        const image = document.querySelector(`#image${i}`)
+        if (image.value != ""){
+            newImages.push(image.value)
+        }
+    }
 
-    //await fetch('https://equipe500.tch099.ovh/projet2/api/supprimerimagespropriete/' + id)
-
-    for (const image of listeImages) {
-        if (image.value > 0) {
-            await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterimage', {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({image_url: image.value, propriete_id: id})
-            })
+    if(newImages.length >= oldImages.length) {
+        for (let i = 0; i < newImages.length; i++) {
+            if (i < oldImages.length) {
+                // Update existing image
+                await fetch('https://equipe500.tch099.ovh/projet2/api/updateimage', {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ image_url: newImages[i], image_id: oldImages[i]['image_id'] })
+                });
+            } else {
+                // Add new images
+                await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterimage', {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ image_url: newImages[i], propriete_id: id })
+                });
+            }   
+        }
+    } else {
+        for (let i = 0; i < oldImages.length; i++) {
+            if (i < newImages.length) {
+                // Update existing image
+                await fetch('https://equipe500.tch099.ovh/projet2/api/updateimage', {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ image_url: newImages[i], image_id: oldImages[i]['image_id'] })
+                });
+            } else {
+                // Delete extra images
+                await fetch('https://equipe500.tch099.ovh/projet2/api/supprimerimage/' + oldImages[i]['image_id'])
+            }
         }
     }
     location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/proprietaire")

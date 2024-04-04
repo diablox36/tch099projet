@@ -318,13 +318,15 @@ post('/projet2/api/updateimage', function () {
     $json = file_get_contents('php://input');
     $data = json_decode($json, true);
 
-    if (isset($data["image_url"]) && isset($data["propriete_id"])) {
-        $req = $pdo->prepare('UPDATE eq2image SET image_url = :image_url WHERE propriete_id = :propriete_id AND image_id = :image_id');
+    if (isset($data["image_url"]) && isset($data["image_id"])) {
+        $req = $pdo->prepare('UPDATE eq2image SET image_url = :image_url WHERE image_id = :image_id');
         $req->execute([
-            "propriete_id" => $data["propriete_id"],
-            "image_url" => $data["image_url"],
             "image_id" => $data["image_id"],
+            "image_url" => $data["image_url"],
         ]);
+
+        header('Content-type: application/json');
+        echo json_encode(['message' => 'success']);
     } else {
         header('Content-type: application/json');
         echo json_encode(['message' => 'error']);

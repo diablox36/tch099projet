@@ -93,7 +93,6 @@
       <ul>
         <li>image_id</li>
         <li>image_url</li>
-        <li>propriete_id</li>
       </ul>
       <a href="https://equipe500.tch099.ovh/projet2/api/ajouterutilisateur">projet2/api/ajouterutilisateur</a><br>
       <p>Ajoute un utilisateur avec les paramètres suivant:</p>
