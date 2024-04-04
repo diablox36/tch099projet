@@ -31,8 +31,8 @@ document.querySelector("#enregistrer").addEventListener('click', async (event) =
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(propriete)
     })
-    const result = await response.json();
-    //const result = await response.text()
+    //const result = await response.json();
+    const result = await response.text()
     console.log(result)
 
     for (let i = 1; i <= maxNumberOfImages; i++) {
