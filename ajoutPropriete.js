@@ -33,13 +33,15 @@ document.querySelector("#enregistrer").addEventListener('click', async (event) =
     })
     let result;
     if (response.ok) {
+        const text = await response.text();
+        console.log('Response text:', text);
         result = await response.json();
         console.log(result);
     } else {
         console.log('Response was not ok', response);
     }
     console.log(result)
-    
+
     for (let i = 1; i <= maxNumberOfImages; i++) {
         let image = document.querySelector(`#image${i}`)
         console.log(image.value)
