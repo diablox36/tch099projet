@@ -38,20 +38,17 @@ document.querySelector("#enregistrer").addEventListener('click', async (event) =
         body: JSON.stringify(propriete)
     })
     const result = await response.json()
-    console.log(result)
 
     for (let i = 1; i <= maxNumberOfImages; i++) {
         let image = document.querySelector(`#image${i}`)
         
         if (image.value != "") {
-            console.log("image.value")
-
-            await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterimage', {
+            const responseImages = await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterimage', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ image_url: image.value, propriete_id: result['id']})
             })
-            const text = await response.text()
+            const text = await responseImages.text()
             console.log(text)
         }
     }
