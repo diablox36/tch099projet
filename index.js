@@ -11,9 +11,7 @@ let listeAppartements = []
 let compteConnecter = false
 let filtreText = ""
 
-console.log(sessionStorage.getItem("type_compte"))
 if(sessionStorage.getItem("type_compte") == "locataire") {
-
   compteConnecter = true
 
   btn.classList.add("bouton")
@@ -37,7 +35,6 @@ async function fetchAppartements(url) {
   for (const appartement of appartements) {
     const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/getfirstimage/" + appartement.id)
     const images = await responseImage.json();
-    console.log(appartement.id)
     if(images.length > 0) {
       listeAppartements.push([appartement, images[0]['image_url']])
     }
@@ -49,19 +46,13 @@ function filtreAppartements() {
   while (main.hasChildNodes()) {
     main.removeChild(main.firstChild)
   }
+
   for (const appartement of listeAppartements) {
-    if(compteConnecter) {
-      if(appartement[0].adresse.toLowerCase().includes(filtreText.toLowerCase()) || appartement[0].arrondissement.toLowerCase().includes(filtreText.toLowerCase())) {
-        ajouterAppartement(appartement[0], appartement[1])
-        numAppartements++
-      }
+    if(!compteConnecter && numAppartements > 12) {
+      break
     }
-    else if(numAppartements < 12) {
-      if(appartement[0].adresse.toLowerCase().includes(filtreText.toLowerCase()) || appartement[0].arrondissement.toLowerCase().includes(filtreText.toLowerCase())) {
-        ajouterAppartement(appartement[0], appartement[1])
-        numAppartements++
-      }
-    }
+    ajouterAppartement(appartement[0], appartement[1])
+    numAppartements++
   }
   nombreAppartementsText.textContent = numAppartements
 }

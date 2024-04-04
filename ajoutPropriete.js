@@ -26,15 +26,22 @@ document.querySelector("#enregistrer").addEventListener('click', async (event) =
     }
     console.log(propriete)
 
-    await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterpropriete', {
+    const response = await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterpropriete', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(propriete)
     })
+    const result = await response.json();
+    console.log(result)
     for (let i = 1; i <= maxNumberOfImages; i++) {
         let image = document.querySelector(`#image${i}`)
         console.log(image.value)
+        console.log(image.value != "")
+        console.log(image.value > 0)
+        
         if (image.value) {
+            console.log("test")
+
             await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterimage', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
