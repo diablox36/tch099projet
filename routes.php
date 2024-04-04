@@ -49,7 +49,7 @@ get('/projet2/api/utilisateur/$courriel', function ($courriel) {
     echo json_encode($result);
 });
 
-get('/projet2/api/getpropriete', function () {
+get('/projet2/api/proprietes', function () {
     global $pdo;
 
     $req = $pdo->query('SELECT * FROM eq2propriete');
@@ -59,7 +59,7 @@ get('/projet2/api/getpropriete', function () {
     echo json_encode($result);
 });
 
-get('/projet2/api/getproprietebyid/$id', function ($id) {
+get('/projet2/api/proprieteparid/$id', function ($id) {
     global $pdo;
 
     $req = $pdo->prepare('SELECT * FROM eq2propriete WHERE id = :id');
@@ -71,11 +71,11 @@ get('/projet2/api/getproprietebyid/$id', function ($id) {
     echo json_encode($result);
 });
 
-get('/projet2/api/getproprietebyemail/$email', function ($email) {
+get('/projet2/api/proprieteparcourriel/$courriel', function ($courriel) {
     global $pdo;
 
-    $req = $pdo->prepare('SELECT * FROM eq2propriete WHERE proprietaire_adresse_courriel = :email');
-    $req->bindParam('email', $email);
+    $req = $pdo->prepare('SELECT * FROM eq2propriete WHERE proprietaire_adresse_courriel = :courriel');
+    $req->bindParam('courriel', $courriel);
     $req->execute();
     $result = $req->fetchAll(PDO::FETCH_ASSOC);
 
@@ -83,7 +83,7 @@ get('/projet2/api/getproprietebyemail/$email', function ($email) {
     echo json_encode($result);
 });
 
-get('/projet2/api/getallimages', function () {
+get('/projet2/api/toutesimages', function () {
     global $pdo;
 
     $req = $pdo->query('SELECT * FROM eq2image');
@@ -93,7 +93,7 @@ get('/projet2/api/getallimages', function () {
     echo json_encode($result);
 });
 
-get('/projet2/api/getimage/$id', function ($id) {
+get('/projet2/api/images/$id', function ($id) {
     global $pdo;
 
     $req = $pdo->prepare('SELECT * FROM eq2image WHERE propriete_id = :id');
@@ -105,7 +105,7 @@ get('/projet2/api/getimage/$id', function ($id) {
     echo json_encode($result);
 });
 
-get('/projet2/api/getfirstimage/$id', function ($id) {
+get('/projet2/api/premiereimage/$id', function ($id) {
     global $pdo;
 
     $req = $pdo->prepare('SELECT * FROM eq2image WHERE propriete_id = :id ORDER BY image_id ASC LIMIT 1');
@@ -180,33 +180,6 @@ get('/projet2/api/ordonnerpropriete/$ordre', function ($ordre) {
 });
 
 //Methodes POST
-
-post('/projet2/api/utilisateurvalide', function () {
-    global $pdo;
-
-    $json = file_get_contents('php://input');
-    $data = json_decode($json, true);
-
-    if (isset ($data["adresse_courriel"]) && isset ($data["mot_de_passe"])) {
-        $req = $pdo->prepare('SELECT `type_compte` FROM `eq2utilisateur` WHERE `adresse_courriel` = :adresse_courriel AND `mot_de_passe` = :mot_de_passe');
-        $req->execute([
-            "adresse_courriel" => $data["adresse_courriel"],
-            "mot_de_passe" => $data["mot_de_passe"],
-        ]);
-        $result = $req->fetchAll(PDO::FETCH_ASSOC);
-        if (isset ($result[0]['type_compte'])) {
-            header('Content-type: application/json');
-            echo json_encode(['message' => 'valide', 'type_compte' => $result[0]['type_compte'], 'adresse_courriel' => $data["adresse_courriel"]]);
-        } else {
-            header('Content-type: application/json');
-            echo json_encode(['message' => 'invalide']);
-        }
-
-    } else {
-        header('Content-type: application/json');
-        echo json_encode(['message' => 'error']);
-    }
-});
 
 post('/projet2/api/ajouterutilisateur', function () {
     global $pdo;
@@ -327,6 +300,33 @@ post('/projet2/api/updateimage', function () {
 
         header('Content-type: application/json');
         echo json_encode(['message' => 'success']);
+    } else {
+        header('Content-type: application/json');
+        echo json_encode(['message' => 'error']);
+    }
+});
+
+post('/projet2/api/utilisateurvalide', function () {
+    global $pdo;
+
+    $json = file_get_contents('php://input');
+    $data = json_decode($json, true);
+
+    if (isset ($data["adresse_courriel"]) && isset ($data["mot_de_passe"])) {
+        $req = $pdo->prepare('SELECT `type_compte` FROM `eq2utilisateur` WHERE `adresse_courriel` = :adresse_courriel AND `mot_de_passe` = :mot_de_passe');
+        $req->execute([
+            "adresse_courriel" => $data["adresse_courriel"],
+            "mot_de_passe" => $data["mot_de_passe"],
+        ]);
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        if (isset ($result[0]['type_compte'])) {
+            header('Content-type: application/json');
+            echo json_encode(['message' => 'valide', 'type_compte' => $result[0]['type_compte'], 'adresse_courriel' => $data["adresse_courriel"]]);
+        } else {
+            header('Content-type: application/json');
+            echo json_encode(['message' => 'invalide']);
+        }
+
     } else {
         header('Content-type: application/json');
         echo json_encode(['message' => 'error']);

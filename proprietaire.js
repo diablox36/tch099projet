@@ -7,11 +7,11 @@ btnDeconnexion.addEventListener('click', (event) => {
 document.addEventListener('DOMContentLoaded', fetchAppartements)
 
 async function fetchAppartements() {
-    const response = await fetch("https://equipe500.tch099.ovh/projet2/api/getproprietebyemail/" + sessionStorage.getItem("courriel"))
+    const response = await fetch("https://equipe500.tch099.ovh/projet2/api/proprieteparcourriel/" + sessionStorage.getItem("courriel"))
     const appartements = await response.json();
   
     for (const appartement of appartements) {
-        const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/getfirstimage/" + appartement.id)
+        const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/premiereimage/" + appartement.id)
         const images = await responseImage.json();
 
         ajouterAppartement(appartement, images[0]['image_url'])

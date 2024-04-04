@@ -26,14 +26,14 @@ if(sessionStorage.getItem("type_compte") == "locataire") {
   messageConnexion.style.display = "none"
 }
 
-document.addEventListener('DOMContentLoaded', fetchAppartements("https://equipe500.tch099.ovh/projet2/api/getpropriete"))
+document.addEventListener('DOMContentLoaded', fetchAppartements("https://equipe500.tch099.ovh/projet2/api/proprietes"))
 
 async function fetchAppartements(url) {
   const response = await fetch(url)
   const appartements = await response.json();
   
   for (const appartement of appartements) {
-    const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/getfirstimage/" + appartement.id)
+    const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/premiereimage/" + appartement.id)
     const images = await responseImage.json();
     if(images.length > 0) {
       listeAppartements.push([appartement, images[0]['image_url']])
@@ -65,7 +65,7 @@ selectTrier.onchange = (event) => {
     main.removeChild(main.firstChild)
   }
   if (selectText === "") {
-    fetchAppartements("https://equipe500.tch099.ovh/projet2/api/getpropriete")
+    fetchAppartements("https://equipe500.tch099.ovh/projet2/api/proprietes")
   }
   else {
     fetchAppartements("https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/" + selectText);

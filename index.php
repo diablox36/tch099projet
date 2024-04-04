@@ -31,17 +31,17 @@
       <p>Retourne la liste de tous les utilisateurs</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/utilisateur/email">projet2/api/utilisateur/email</a><br>
       <p>Retourne les informations de l'utilisateur ayant l'adresse courriel $email</p>
-      <a href="https://equipe500.tch099.ovh/projet2/api/getpropriete">projet2/api/getpropriete</a><br>
+      <a href="https://equipe500.tch099.ovh/projet2/api/proprietes">projet2/api/proprietes</a><br>
       <p>Retourne la liste de toutes les propriétés ordonnées par leur id</p>
-      <a href="https://equipe500.tch099.ovh/projet2/api/getproprietebyid/id">projet2/api/getproprietebyid/id</a><br>
+      <a href="https://equipe500.tch099.ovh/projet2/api/proprieteparid/id">projet2/api/proprieteparid/id</a><br>
       <p>Retourne les informations de la propriété ayant l'id $id</p>
-      <a href="https://equipe500.tch099.ovh/projet2/api/getproprietebyemail/email">projet2/api/getproprietebyemail/email</a><br>
+      <a href="https://equipe500.tch099.ovh/projet2/api/proprieteparcourriel/email">projet2/api/proprieteparcourriel/email</a><br>
       <p>Retourne les informations des propriétés de l'utilisateur ayant l'adresse courriel $email</p>
-      <a href="https://equipe500.tch099.ovh/projet2/api/getallimages">projet2/api/getallimages</a><br>
+      <a href="https://equipe500.tch099.ovh/projet2/api/toutesimages">projet2/api/toutesimages</a><br>
       <p>Retourne la liste de toutes les images de toutes les propriétés</p>
-      <a href="https://equipe500.tch099.ovh/projet2/api/getimage/id">projet2/api/getimage/id</a><br>
+      <a href="https://equipe500.tch099.ovh/projet2/api/images/id">projet2/api/images/id</a><br>
       <p>Retourne les images de la propriété ayant l'id $id</p>
-      <a href="https://equipe500.tch099.ovh/projet2/api/getfirstimage/id">projet2/api/getfirstimage/id</a><br>
+      <a href="https://equipe500.tch099.ovh/projet2/api/premiereimage/id">projet2/api/premiereimage/id</a><br>
       <p>Retourne la première image de la propriété ayant l'id $id</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/supprimerpropriete/id">projet2/api/supprimerpropriete/id</a><br>
       <p>Supprime la propriété ayant l'id $id</p>
@@ -50,15 +50,21 @@
       <a href="https://equipe500.tch099.ovh/projet2/api/supprimerimagespropriete/id">projet2/api/supprimerimagespropriete/id</a><br>
       <p>Supprime toutes les images de la propriété ayant l'id $id</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/prixCroissant">projet2/api/ordonnerpropriete/prixCroissant</a><br>
-      <p>Retourne la liste de toutes les propriétés ordonnées par leur prix croissant</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/prixDecroissant">projet2/api/ordonnerpropriete/prixDecroissant</a><br>
-      <p>Retourne la liste de toutes les propriétés ordonnées par leur prix décroissant</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/arrondissementCroissant">projet2/api/ordonnerpropriete/arrondissementCroissant</a><br>
-      <p>Retourne la liste de toutes les propriétés ordonnées par leur arrondissement croissant</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/arrondissementDecroissant">projet2/api/ordonnerpropriete/arrondissementDecroissant</a><br>
-      <p>Retourne la liste de toutes les propriétés ordonnées par leur arrondissement décroissant</p>
+      <p>Retourne la liste de toutes les propriétés ordonnées selon la méthode choisie</p>
 
       <h3>Méthodes POST</h3>
+      <a href="https://equipe500.tch099.ovh/projet2/api/ajouterutilisateur">projet2/api/ajouterutilisateur</a><br>
+      <p>Ajoute un utilisateur avec les paramètres suivant:</p>
+      <ul>
+        <li>adresse_courriel</li>
+        <li>mot_de_passe</li>
+        <li>nom</li>
+        <li>prenom</li>
+        <li>telephone</li>
+        <li>type_compte</li>
       <a href="https://equipe500.tch099.ovh/projet2/api/ajouterpropriete">projet2/api/ajouterpropriete</a><br>
       <p>Ajoute une propriété avec les paramètres suivant:</p>
       <ul>
@@ -87,6 +93,12 @@
         <li>stationnement</li>
         <li>description</li>
         <li>id</li>
+      </ul>
+      <a href="https://equipe500.tch099.ovh/projet2/api/ajouterimage">projet2/api/ajouterimage</a><br>
+      <p>Ahoute une image avec les paramètres suivant</p>
+      <ul>
+        <li>image_url</li>
+        <li>propriete_id</li>
       </ul>
       <a href="https://equipe500.tch099.ovh/projet2/api/updateimage">projet2/api/updateimage</a><br>
       <p>Met à jour une image d'une propriété avec les paramètres suivant</p>

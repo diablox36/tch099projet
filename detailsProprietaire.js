@@ -17,10 +17,10 @@ btnSupprimer.addEventListener('click', async (event) => {
 document.addEventListener('DOMContentLoaded', fetchLocation)
 
 async function fetchLocation() {
-    const response = await fetch("https://equipe500.tch099.ovh/projet2/api/getproprietebyid/" + id)
+    const response = await fetch("https://equipe500.tch099.ovh/projet2/api/proprieteparid/" + id)
     const appartements = await response.json();
 
-    const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/getimage/" + id)
+    const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/images/" + id)
     oldImages = await responseImage.json();
     afficherInformation(appartements[0])
 }
@@ -90,7 +90,7 @@ btnRetour.addEventListener('click', async (event) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatepropriete)
     })
-    
+
     let newImages = []
     for (let i = 0; i < maxNumberOfImages; i++) {
         const image = document.querySelector(`#image${i}`)
