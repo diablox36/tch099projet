@@ -1,5 +1,6 @@
 const parametreUrl = new URLSearchParams(window.location.search)
-const id = parametreUrl.get('id')
+let id = parametreUrl.get('id')
+id = 1
 
 const btnSupprimer = document.querySelector("#supprimer")
 btnSupprimer.addEventListener('click', async (event) => {
@@ -39,6 +40,7 @@ const image3 = document.querySelector("#image3")
 const image4 = document.querySelector("#image4")
 const image5 = document.querySelector("#image5")
 const image6 = document.querySelector("#image6")
+const listeImages = [image1, image2, image3, image4, image5, image6]
 
 function afficherInformation(appartement, images) {
 
@@ -65,12 +67,10 @@ function afficherInformation(appartement, images) {
     }
     stationnement.value = appartement.stationnement
     description.value = appartement.description
-    image1.value = images[0]['image_url']
-    image2.value = images[1]['image_url']
-    image3.value = images[2]['image_url']
-    image4.value = images[3]['image_url']
-    image5.value = images[4]['image_url']
-    image6.value = images[5]['image_url']
+
+    for (let i = 0; i < images.length; i++) {
+        listeImages[i].value = images[i]['image_url']
+    }
 }
 
 const btnRetour = document.querySelector('#retour')
@@ -96,21 +96,15 @@ btnRetour.addEventListener('click', async (event) => {
         body: JSON.stringify(updatepropriete)
     })
 
-    let updateimage = {
-        image1: image1.value,
-        image2: image2.value,
-        image3: image3.value,
-        image4: image4.value,
-        image5: image5.value,
-        image6: image6.value,
-        id: id,
+    await fetch('https://equipe500.tch099.ovh/projet2/api/supprimerimagespropriete/' + id)
+
+    for (const image of listeImages) {
+        await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterimage', {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({image_url: image.value, propriete_id: id})
+        })
+        
     }
-
-    await fetch('https://equipe500.tch099.ovh/projet2/api/updateimage', {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updateimage)
-    })
-
     location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/proprietaire")
 })
