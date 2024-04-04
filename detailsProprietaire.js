@@ -17,12 +17,11 @@ async function fetchLocation() {
     const response = await fetch("https://equipe500.tch099.ovh/projet2/api/getproprietebyid/" + id)
     const appartements = await response.json();
 
-    const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/getfirstimage/" + id)
+    const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/getimage/" + id)
     const images = await responseImage.json();
 
-    afficherInformation(appartements[0], images[0]['image_url'])
+    afficherInformation(appartements[0], images)
 }
-const image = document.querySelector("img")
 const prix = document.querySelector("#prix")
 const adresse = document.querySelector("#adresse")
 const arrondissement = document.querySelector("#arrondissement")
@@ -35,11 +34,15 @@ const animauxNon = document.querySelector("#animauxNon")
 const stationnement = document.querySelector("#stationnement")
 const description = document.querySelector("#description")
 const courrielProprietaire = document.querySelector("#courrielProprietaire")
+const image1 = document.querySelector("#image1")
+const image2 = document.querySelector("#image2")
+const image3 = document.querySelector("#image3")
+const image4 = document.querySelector("#image4")
+const image5 = document.querySelector("#image5")
+const image6 = document.querySelector("#image6")
 
-function afficherInformation(appartement, image_url) {
+function afficherInformation(appartement, images) {
 
-    image.src = image_url
-    image.alt = appartement.adresse
     prix.value = appartement.prix
     adresse.value = appartement.adresse
     arrondissement.value = appartement.arrondissement
@@ -64,6 +67,13 @@ function afficherInformation(appartement, image_url) {
     stationnement.value = appartement.stationnement
     description.value = appartement.description
     courrielProprietaire.textContent = appartement.proprietaire_adresse_courriel
+    image1.value = images[0]['image_url']
+    image2.value = images[1]['image_url']
+    image3.value = images[2]['image_url']
+    image4.value = images[3]['image_url']
+    image5.value = images[4]['image_url']
+    image6.value = images[5]['image_url']
+    
 }
 
 const btnRetour = document.querySelector('#retour')

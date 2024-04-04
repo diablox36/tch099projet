@@ -209,3 +209,12 @@ textarea{
     width: 600px;
     height: 4rem;
 }
+.photo{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+}
+.photo input{
+    margin-bottom: 0.4rem;
+}
