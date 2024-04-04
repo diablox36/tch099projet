@@ -73,6 +73,7 @@
         <li>description</li>
         <li>proprietaire_adresse_courriel</li>
       </ul>
+      <p>Retourne le message 'success' et l'id de la propriété ajoutée</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/updatepropriete">projet2/api/updatepropriete</a><br>
       <p>Met à jour la propriété avec les paramètres suivant:</p>
       <ul>
