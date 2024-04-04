@@ -22,7 +22,6 @@ async function fetchLocation() {
 
     afficherInformation(appartements[0], images[0]['image_url'])
 }
-afficherInformation()
 
 function afficherInformation(appartement, image_url) {
     const image = document.querySelector("img")
