@@ -11,7 +11,9 @@ let listeAppartements = []
 let compteConnecter = false
 let filtreText = ""
 
+console.log(sessionStorage.getItem("type_compte"))
 if(sessionStorage.getItem("type_compte") == "locataire") {
+
   compteConnecter = true
 
   btn.classList.add("bouton")
