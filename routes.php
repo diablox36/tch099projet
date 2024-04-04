@@ -23,7 +23,7 @@ get('/projet2/LocAppart/inscription', 'inscription.html');
 get('/projet2/LocAppart/details', 'details.html');
 get('/projet2/LocAppart/proprietaire', 'proprietaire.html');
 get('/projet2/LocAppart/detailsProprietaire', 'detailsProprietaire.html');
-
+get('/projet2/LocAppart/ajoutPropriete', 'ajoutPropriete.html');
 
 // API
 

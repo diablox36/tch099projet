@@ -1,6 +1,7 @@
 const parametreUrl = new URLSearchParams(window.location.search)
 let id = parametreUrl.get('id')
 id = 1
+let oldImages = null
 
 const btnSupprimer = document.querySelector("#supprimer")
 btnSupprimer.addEventListener('click', async (event) => {
@@ -19,9 +20,9 @@ async function fetchLocation() {
     const appartements = await response.json();
 
     const responseImage = await fetch("https://equipe500.tch099.ovh/projet2/api/getimage/" + id)
-    const images = await responseImage.json();
-
-    afficherInformation(appartements[0], images)
+    oldImages = await responseImage.json();
+    console.log(oldImages)
+    afficherInformation(appartements[0], oldImages)
 }
 const prix = document.querySelector("#prix")
 const adresse = document.querySelector("#adresse")
@@ -89,6 +90,7 @@ btnRetour.addEventListener('click', async (event) => {
         description: description.value,
         id: id,
     }
+    let newImages = []
 
     await fetch('https://equipe500.tch099.ovh/projet2/api/updatepropriete', {
         method: "POST",
@@ -96,7 +98,7 @@ btnRetour.addEventListener('click', async (event) => {
         body: JSON.stringify(updatepropriete)
     })
 
-    await fetch('https://equipe500.tch099.ovh/projet2/api/supprimerimagespropriete/' + id)
+    //await fetch('https://equipe500.tch099.ovh/projet2/api/supprimerimagespropriete/' + id)
 
     for (const image of listeImages) {
         if (image.value > 0) {
