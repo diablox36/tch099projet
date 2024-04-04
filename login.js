@@ -21,8 +21,10 @@ btnLogin.addEventListener('click', async (event) => {
     })
     const result = await response.json();
     if(result['message'] == "valide"){
-        setCookie("typeCompte", result['type_compte'])
-        setCookie("id", result['adresse_courriel'])
+        sessionStorage.setItem('type_compte', result['type_compte'])
+        sessionStorage.setItem('courriel', result['adresse_courriel'])
+        //setCookie("typeCompte", result['type_compte'])
+        //setCookie("id", result['adresse_courriel'])
 
         if(result['type_compte'] == "locataire"){
             location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/")
