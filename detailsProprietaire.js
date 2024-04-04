@@ -1,6 +1,5 @@
 const parametreUrl = new URLSearchParams(window.location.search)
 let id = parametreUrl.get('id')
-id = 1
 let oldImages = null
 
 const btnSupprimer = document.querySelector("#supprimer")
