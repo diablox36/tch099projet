@@ -2,7 +2,6 @@ const parametreUrl = new URLSearchParams(window.location.search)
 let id = parametreUrl.get('id')
 const maxNumberOfImages = 6
 let oldImages 
-id = 1
 
 const btnSupprimer = document.querySelector("#supprimer")
 btnSupprimer.addEventListener('click', async (event) => {
