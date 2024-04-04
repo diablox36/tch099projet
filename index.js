@@ -51,8 +51,10 @@ function filtreAppartements() {
     if(!compteConnecter && numAppartements >= 12) {
       break
     }
-    ajouterAppartement(appartement[0], appartement[1])
-    numAppartements++
+    if(appartement[0].adresse.toLowerCase().includes(filtreText.toLowerCase()) || appartement[0].arrondissement.toLowerCase().includes(filtreText.toLowerCase())) {
+      ajouterAppartement(appartement[0], appartement[1])
+      numAppartements++
+    }
   }
   nombreAppartementsText.textContent = numAppartements
 }
