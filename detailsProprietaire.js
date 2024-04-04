@@ -77,7 +77,7 @@ const btnRetour = document.querySelector('#retour')
 btnRetour.addEventListener('click', async (event) => {
     event.preventDefault();
 
-    let update = {
+    let updatepropriete = {
         adresse: adresse.value,
         nb_chambres: nombreChambres.value,
         superficie: superficie.value,
@@ -90,12 +90,27 @@ btnRetour.addEventListener('click', async (event) => {
         id: id,
     }
 
-    await fetch('https://equipe500.tch099.ovh/projet2/api/updatepropriete',
-        {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(update)
-        })
+    await fetch('https://equipe500.tch099.ovh/projet2/api/updatepropriete', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatepropriete)
+    })
+
+    let updateimage = {
+        image1: image1.value,
+        image2: image2.value,
+        image3: image3.value,
+        image4: image4.value,
+        image5: image5.value,
+        image6: image6.value,
+        id: id,
+    }
+
+    await fetch('https://equipe500.tch099.ovh/projet2/api/updateimage', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updateimage)
+    })
 
     location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/proprietaire")
 })

@@ -45,6 +45,8 @@
       <p>Retourne la première image de la propriété ayant l'id $id</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/supprimerpropriete/id">projet2/api/supprimerpropriete/id</a><br>
       <p>Supprime la propriété ayant l'id $id</p>
+      <a href="https://equipe500.tch099.ovh/projet2/api/supprimerimage/id">projet2/api/supprimerimage/id</a><br>
+      <p>Supprime toutes les images de la propriété ayant l'id $id</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/prixCroissant">projet2/api/ordonnerpropriete/prixCroissant</a><br>
       <p>Retourne la liste de toutes les propriétés ordonnées par leur prix croissant</p>
       <a href="https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/prixDecroissant">projet2/api/ordonnerpropriete/prixDecroissant</a><br>
@@ -58,14 +60,37 @@
       <a href="https://equipe500.tch099.ovh/projet2/api/ajouterpropriete">projet2/api/ajouterpropriete</a><br>
       <p>Ajoute une propriété avec les paramètres suivant:</p>
       <ul>
-        <li>adresse</li>
-        <li>nb_chambres</li>
         <li>prix</li>
+        <li>adresse</li>
+        <li>arrondissement</li>
+        <li>nb_chambres</li>
+        <li>superficie</li>
         <li>animaux</li>
         <li>fumeur</li>
         <li>stationnement</li>
         <li>description</li>
         <li>proprietaire_adresse_courriel</li>
+      </ul>
+      <a href="https://equipe500.tch099.ovh/projet2/api/updatepropriete">projet2/api/updatepropriete</a><br>
+      <p>Met à jour la propriété avec les paramètres suivant:</p>
+      <ul>
+        <li>prix</li>
+        <li>adresse</li>
+        <li>arrondissement</li>
+        <li>nb_chambres</li>
+        <li>superficie</li>
+        <li>animaux</li>
+        <li>fumeur</li>
+        <li>stationnement</li>
+        <li>description</li>
+        <li>id</li>
+      </ul>
+      <a href="https://equipe500.tch099.ovh/projet2/api/updateimage">projet2/api/updateimage</a><br>
+      <p>Met à jour une image d'une propriété avec les paramètres suivant</p>
+      <ul>
+        <li>image_id</li>
+        <li>image_url</li>
+        <li>propriete_id</li>
       </ul>
       <a href="https://equipe500.tch099.ovh/projet2/api/ajouterutilisateur">projet2/api/ajouterutilisateur</a><br>
       <p>Ajoute un utilisateur avec les paramètres suivant:</p>

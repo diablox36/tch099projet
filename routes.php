@@ -128,6 +128,17 @@ get('/projet2/api/supprimerpropriete/$id', function ($id) {
     echo json_encode(['message' => 'success']);
 });
 
+get('/projet2/api/supprimerimage/$id', function ($id) {
+    global $pdo;
+
+    $req = $pdo->prepare('DELETE FROM eq2image WHERE propriete = :id');
+    $req->bindParam('id', $id);
+    $req->execute();
+
+    header('Content-type: application/json');
+    echo json_encode(['message' => 'success']);
+});
+
 get('/projet2/api/ordonnerpropriete/$ordre', function ($ordre) {
     global $pdo;
     $result = null;
@@ -254,6 +265,43 @@ post('/projet2/api/updatepropriete', function () {
             "stationnement" => $data["stationnement"],
             "description" => $data["description"],
             "id" => $data["id"]
+        ]);
+    } else {
+        header('Content-type: application/json');
+        echo json_encode(['message' => 'error']);
+    }
+});
+
+post('/projet2/api/ajouterimage', function () {
+    global $pdo;
+
+    $json = file_get_contents('php://input');
+    $data = json_decode($json, true);
+
+    if (isset($data["image_url"]) && isset($data["propriete_id"])) {
+        $req = $pdo->prepare('INSERT INTO `eq2image`(`propriete_id`, `image_url`) VALUES (:propriete_id, :image_url)');
+        $req->execute([
+            "propriete_id" => $data["propriete_id"],
+            "image_url" => $data["image_url"],
+        ]);
+    } else {
+        header('Content-type: application/json');
+        echo json_encode(['message' => 'error']);
+    }
+});
+
+post('/projet2/api/updateimage', function () {
+    global $pdo;
+
+    $json = file_get_contents('php://input');
+    $data = json_decode($json, true);
+
+    if (isset($data["image_url"]) && isset($data["propriete_id"])) {
+        $req = $pdo->prepare('UPDATE eq2image SET image_url = :image_url WHERE propriete_id = :propriete_id AND image_id = :image_id');
+        $req->execute([
+            "propriete_id" => $data["propriete_id"],
+            "image_url" => $data["image_url"],
+            "image_id" => $data["image_id"],
         ]);
     } else {
         header('Content-type: application/json');
