@@ -33,7 +33,6 @@ const animauxOui = document.querySelector("#animauxOui")
 const animauxNon = document.querySelector("#animauxNon")
 const stationnement = document.querySelector("#stationnement")
 const description = document.querySelector("#description")
-const courrielProprietaire = document.querySelector("#courrielProprietaire")
 const image1 = document.querySelector("#image1")
 const image2 = document.querySelector("#image2")
 const image3 = document.querySelector("#image3")
@@ -66,14 +65,12 @@ function afficherInformation(appartement, images) {
     }
     stationnement.value = appartement.stationnement
     description.value = appartement.description
-    courrielProprietaire.textContent = appartement.proprietaire_adresse_courriel
     image1.value = images[0]['image_url']
     image2.value = images[1]['image_url']
     image3.value = images[2]['image_url']
     image4.value = images[3]['image_url']
     image5.value = images[4]['image_url']
     image6.value = images[5]['image_url']
-    
 }
 
 const btnRetour = document.querySelector('#retour')
