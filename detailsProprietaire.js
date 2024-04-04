@@ -72,15 +72,15 @@ btnRetour.addEventListener('click', async (event) => {
 
     let update = {
         adresse: adresse.value,
-        nb_chambres: nombreChambres.value.split(' ')[0],
-        superficie: superficie.value.split(' ')[0],
-        prix: prix.value.split('$')[0],
+        nb_chambres: nombreChambres.value,
+        superficie: superficie.value,
+        prix: prix.value,
         arrondissement: arrondissement.value,
         animaux: animauxOui.checked ? 1 : 0,
         fumeur: fumeurOui.checked ? 1 : 0,
-        stationnement: stationnement.value.split(' ')[0],
+        stationnement: stationnement.value,
         description: description.value,
-        id: id
+        id: id,
     }
 
     await fetch('https://equipe500.tch099.ovh/projet2/api/updatepropriete',
