@@ -37,12 +37,9 @@ document.querySelector("#enregistrer").addEventListener('click', async (event) =
 
     for (let i = 1; i <= maxNumberOfImages; i++) {
         let image = document.querySelector(`#image${i}`)
-        console.log(image.value)
-        console.log(image.value != "")
-        console.log(image.value > 0)
         
-        if (image.value) {
-            console.log("test")
+        if (image.value != "") {
+            console.log("image.value")
 
             await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterimage', {
                 method: "POST",

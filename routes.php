@@ -225,6 +225,8 @@ post('/projet2/api/ajouterutilisateur', function () {
             "type_compte" => $data["type_compte"],
         ]);
 
+        header('Content-type: application/json');
+        echo json_encode(['message' => 'success']);
     } else {
         header('Content-type: application/json');
         echo json_encode(['message' => 'error']);
@@ -251,6 +253,9 @@ post('/projet2/api/ajouterpropriete', function () {
             "description" => $data["description"],
             "proprietaire_adresse_courriel" => $data["proprietaire_adresse_courriel"],
         ]);
+
+        header('Content-type: application/json');
+        echo json_encode(['message' => 'success']);
     } else {
         header('Content-type: application/json');
         echo json_encode(['message' => 'error']);
@@ -277,6 +282,9 @@ post('/projet2/api/updatepropriete', function () {
             "description" => $data["description"],
             "id" => $data["id"]
         ]);
+
+        header('Content-type: application/json');
+        echo json_encode(['message' => 'success']);
     } else {
         header('Content-type: application/json');
         echo json_encode(['message' => 'error']);
@@ -295,6 +303,9 @@ post('/projet2/api/ajouterimage', function () {
             "propriete_id" => $data["propriete_id"],
             "image_url" => $data["image_url"],
         ]);
+
+        header('Content-type: application/json');
+        echo json_encode(['message' => 'success']);
     } else {
         header('Content-type: application/json');
         echo json_encode(['message' => 'error']);
