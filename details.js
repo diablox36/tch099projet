@@ -25,7 +25,7 @@ function afficherInformation(appartement, image_url) {
     const stationnement = document.querySelector("#stationnement")
     const description = document.querySelector("#description")
     const courrielProprietaire = document.querySelector("#courrielProprietaire")
-    
+
     image.src = image_url
     image.alt = appartement.adresse
     prix.textContent = appartement.prix + "$ / mois"
@@ -38,4 +38,5 @@ function afficherInformation(appartement, image_url) {
     stationnement.textContent = appartement.stationnement + " stationnement(s)"
     description.textContent = appartement.description
     courrielProprietaire.textContent = appartement.proprietaire_adresse_courriel
+    courrielProprietaire.href = "mailto:" + appartement.proprietaire_adresse_courriel
 }
