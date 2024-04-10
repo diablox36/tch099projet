@@ -38,6 +38,5 @@ function afficherInformation(appartement, image_url) {
     stationnement.textContent = appartement.stationnement + " stationnement(s)"
     description.textContent = appartement.description
     courrielProprietaire.textContent = appartement.proprietaire_adresse_courriel
-    let s = "mailto:" + appartement.proprietaire_adresse_courriel
-    courrielProprietaire.href = s
+    courrielProprietaire.href = "mailto:" + courrielProprietaire.textContent
 }
