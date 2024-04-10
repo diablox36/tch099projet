@@ -179,6 +179,26 @@ get('/projet2/api/ordonnerpropriete/$ordre', function ($ordre) {
     echo json_encode($result);
 });
 
+get('/projet2/api/trouverfavoris/$courriel', function () {
+    global $pdo;
+
+    $json = file_get_contents('php://input');
+    $data = json_decode($json, true);
+
+    if (isset ($data["courriel"])) {
+        $req = $pdo->prepare('SELECT * from `eq2propriete` INNER JOIN `eq2favoris` ON eq2propriete.id = eq2favoris.id WHERE eq2favoris.courriel = :courriel');
+        $req->execute([
+            "courriel" => $data["courriel"],
+        ]);
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        header('Content-type: application/json');
+        echo json_encode($result);
+    } else {
+        header('Content-type: application/json');
+        echo json_encode(['message' => 'error']);
+    }
+});
+
 //Methodes POST
 
 post('/projet2/api/ajouterutilisateur', function () {
@@ -270,7 +290,7 @@ post('/projet2/api/ajouterimage', function () {
     $json = file_get_contents('php://input');
     $data = json_decode($json, true);
 
-    if (isset($data["image_url"]) && isset($data["propriete_id"])) {
+    if (isset ($data["image_url"]) && isset ($data["propriete_id"])) {
         $req = $pdo->prepare('INSERT INTO `eq2image`(`propriete_id`, `image_url`) VALUES (:propriete_id, :image_url)');
         $req->execute([
             "propriete_id" => $data["propriete_id"],
@@ -291,7 +311,7 @@ post('/projet2/api/updateimage', function () {
     $json = file_get_contents('php://input');
     $data = json_decode($json, true);
 
-    if (isset($data["image_url"]) && isset($data["image_id"])) {
+    if (isset ($data["image_url"]) && isset ($data["image_id"])) {
         $req = $pdo->prepare('UPDATE eq2image SET image_url = :image_url WHERE image_id = :image_id');
         $req->execute([
             "image_id" => $data["image_id"],
@@ -327,6 +347,41 @@ post('/projet2/api/utilisateurvalide', function () {
             echo json_encode(['message' => 'invalide']);
         }
 
+    } else {
+        header('Content-type: application/json');
+        echo json_encode(['message' => 'error']);
+    }
+});
+
+post('/projet2/api/ajouterfavoris', function () {
+    global $pdo;
+
+    $json = file_get_contents('php://input');
+    $data = json_decode($json, true);
+
+    if (isset ($data["courriel"]) && isset ($data["propriete_id"])) {
+        $req = $pdo->prepare('INSERT INTO `eq2favoris`(`courriel`, `propriete_id`) VALUES (:courriel, :propriete_id)');
+        $req->execute([
+            "courriel" => $data["courriel"],
+            "propriete_id" => $data["propriete_id"],
+        ]);
+    } else {
+        header('Content-type: application/json');
+        echo json_encode(['message' => 'error']);
+    }
+});
+
+post('/projet2/api/retirerfavoris', function () {
+    global $pdo;
+
+    $json = file_get_contents('php://input');
+    $data = json_decode($json, true);
+
+    if (isset ($data["courriel"])) {
+        $req = $pdo->prepare('DELETE FROM `eq2favoris` WHERE courriel = :courriel');
+        $req->execute([
+            "courriel" => $data["courriel"],
+        ]);
     } else {
         header('Content-type: application/json');
         echo json_encode(['message' => 'error']);
