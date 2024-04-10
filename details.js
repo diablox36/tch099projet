@@ -39,4 +39,23 @@ function afficherInformation(appartement, image_url) {
     description.textContent = appartement.description
     courrielProprietaire.textContent = appartement.proprietaire_adresse_courriel
     courrielProprietaire.href = "mailto:" + appartement.proprietaire_adresse_courriel + "?subject=Au sujet de l'appartement sur " + appartement.adresse
+
+    if (document.cookie.typeCompte == "locataire") {
+        const btnAjoutFav = document.createElement("button")
+        btnAjoutFav.textContent = "Ajouter comme Favoris"
+        btnAjoutFav.classList.add("bouton")
+        btnAjoutFav.classList.add("boutonBleu")
+        btnAjoutFav.addEventListener("click", async () => {
+            const nouveauFav = {
+                courrielFav: document.cookie.id,
+                adresseFav: adresse
+            }
+            await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterutilisateur',
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(nouveauFav)
+                })
+        })
+    }
 }

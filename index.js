@@ -72,7 +72,12 @@ selectTrier.onchange = (event) => {
     fetchAppartements("https://equipe500.tch099.ovh/projet2/api/proprietes")
   }
   else {
-    fetchAppartements("https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/" + selectText);
+    if (selectText != "Favoris") {
+      fetchAppartements("https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/" + selectText);
+    }
+    else {
+      fetchAppartements("https://equipe500.tch099.ovh/projet2/api/trouverfavoris/" + document.cookie.id)
+    }
   }
 }
 
