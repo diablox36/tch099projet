@@ -49,7 +49,7 @@ function afficherInformation(appartement, image_url) {
         btnAjoutFav.addEventListener("click", async () => {
             const nouveauFav = {
                 courriel: sessionStorage.getItem("id"),
-                adresse: adresse
+                adresse: appartement.adresse
             }
             console.log(nouveauFav)
             await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterfavoris',
