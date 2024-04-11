@@ -359,11 +359,11 @@ post('/projet2/api/ajouterfavoris', function () {
     $json = file_get_contents('php://input');
     $data = json_decode($json, true);
 
-    if (isset ($data["courriel"]) && isset ($data["propriete_id"])) {
-        $req = $pdo->prepare('INSERT INTO `eq2favoris`(`courriel`, `propriete_id`) VALUES (:courriel, :propriete_id)');
+    if (isset ($data["courrielFav"]) && isset ($data["adresseFav"])) {
+        $req = $pdo->prepare('INSERT INTO `eq2favoris`(`courriel`, `adresse`) VALUES (:courriel, :adresse)');
         $req->execute([
-            "courriel" => $data["courriel"],
-            "propriete_id" => $data["propriete_id"],
+            "courriel" => $data["courrielFav"],
+            "adresse" => $data["adresseFav"],
         ]);
     } else {
         header('Content-type: application/json');
