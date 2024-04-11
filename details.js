@@ -49,7 +49,7 @@ function afficherInformation(appartement, image_url) {
         btnFav.classList.add("bouton")
         btnFav.classList.add("boutonBleu")
 
-        console.log(estFavoris(user))
+        console.log(estFavoris(user)["result"])
 
         if (estFavoris(user)) {
             btnFav.textContent = "Retirer Favoris"
@@ -88,7 +88,6 @@ async function estFavoris(user) {
         body: JSON.stringify(user)
     })
     const result = await response.json();
-    console.log(result["message"] === "estFavoris")
 
     return await result["message"] === "estFavoris"
 }
