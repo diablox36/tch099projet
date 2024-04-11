@@ -390,7 +390,7 @@ post('/projet2/api/estFavoris', function () {
     $data = json_decode($json, true);
 
     if (isset ($data["courriel"]) && isset ($data["adresse"])) {
-        $req = $pdo->prepare('SELECT * FROM `eq2favoris` WHERE courriel = :courriel AND adresse = :adresse');
+        $req = $pdo->prepare('SELECT * FROM `eq2favoris` WHERE `courriel` = :courriel AND `adresse` = :adresse');
         $req->execute([
             "courriel" => $data["courriel"],
             "adresse" => $data["adresse"]
