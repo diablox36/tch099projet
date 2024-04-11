@@ -397,7 +397,7 @@ post('/projet2/api/estFavoris', function () {
         ]);
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
 
-        if (isset ($result[0]['courriel'])) {
+        if (isset ($result[0]['courriel']) && $result[0]['courriel'] == $data["courriel"]) {
             header('Content-type: application/json');
             echo json_encode(['message' => 'estFavoris']);
         } else {
