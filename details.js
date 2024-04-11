@@ -45,7 +45,7 @@ function afficherInformation(appartement, image_url) {
         btnAjoutFav.textContent = "Ajouter comme Favoris"
         btnAjoutFav.classList.add("bouton")
         btnAjoutFav.classList.add("boutonBleu")
-        document.body.appendChild(btnAjoutFav)
+        document.querySelector(".boutonFavoris").appendChild(btnAjoutFav)
         btnAjoutFav.addEventListener("click", async () => {
             const nouveauFav = {
                 courrielFav: document.cookie.id,
