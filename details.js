@@ -87,5 +87,5 @@ async function estFavoris(user) {
     })
     const result = await response.json();
 
-    return result["message"] == "esetFavoris"
+    return result["message"] == "estFavoris"
 }
