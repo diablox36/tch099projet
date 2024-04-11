@@ -360,7 +360,7 @@ post('/projet2/api/ajouterfavoris', function () {
     $data = json_decode($json, true);
 
     if (isset ($data["courriel"]) && isset ($data["adresse"])) {
-        $req = $pdo->prepare("INSERT INTO `eq2favoris` VALUES (':courriel', ':adresse')");
+        $req = $pdo->prepare("INSERT INTO `eq2favoris` VALUES (:courriel, :adresse)");
         $req->execute([
             "courriel" => $data["courriel"],
             "adresse" => $data["adresse"],
