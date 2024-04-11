@@ -1,6 +1,7 @@
-*{
+* {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 body {
     margin: 0;
     background-color: whitesmoke;
@@ -23,15 +24,18 @@ body {
     display: flex;
     justify-content: center;
 }
+
 .headerVerticale {
     display: flex;
     flex-direction: row;
 }
+
 .headerStart {
     display: flex;
     justify-content: start;
 }
-.headerStart *{
+
+.headerStart * {
     margin: 1rem 0 1rem 1rem;
 }
 
@@ -212,7 +216,7 @@ select {
     margin: 0.4rem 0;
 }
 
-textarea{
+textarea {
     padding: 10px 20px;
     border-radius: 10px;
     border-width: 2px;
@@ -221,23 +225,32 @@ textarea{
     width: 70%;
     height: 4rem;
 }
-.photo{
+
+.photo {
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
-.photo input{
+
+.photo input {
     width: 70%;
     margin-bottom: 0.4rem;
 }
-.adresse, .arrondissement{
+
+.adresse,
+.arrondissement {
     width: 300px;
 }
 
-.messageProprietaire{
+.messageProprietaire {
     margin-left: 1rem;
 }
-.messageProprietaire p{
+
+.messageProprietaire p {
     font-size: large;
     padding-bottom: 1rem;
+}
+
+.boutonFavoris {
+    padding: 5px;
 }
