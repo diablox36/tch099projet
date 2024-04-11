@@ -76,7 +76,7 @@ selectTrier.onchange = (event) => {
       fetchAppartements("https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/" + selectText);
     }
     else {
-      fetchAppartements("https://equipe500.tch099.ovh/projet2/api/trouverfavoris/" + document.cookie.id)
+      fetchAppartements("https://equipe500.tch099.ovh/projet2/api/trouverfavoris/" + sessionStorage.getItem("courriel"))
     }
   }
 }

@@ -41,23 +41,51 @@ function afficherInformation(appartement, image_url) {
     courrielProprietaire.href = "mailto:" + appartement.proprietaire_adresse_courriel + "?subject=Au sujet de l'appartement sur " + appartement.adresse
 
     if (sessionStorage.getItem("type_compte") == "locataire") {
-        const btnAjoutFav = document.createElement("button")
-        btnAjoutFav.textContent = "Ajouter comme Favoris"
-        btnAjoutFav.classList.add("bouton")
-        btnAjoutFav.classList.add("boutonBleu")
-        document.querySelector(".boutonFavoris").appendChild(btnAjoutFav)
-        btnAjoutFav.addEventListener("click", async () => {
-            const nouveauFav = {
-                courriel: sessionStorage.getItem("courriel"),
-                adresse: appartement.adresse
-            }
-            console.log(nouveauFav)
-            await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterfavoris',
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(nouveauFav)
-                })
-        })
+        const user = {
+            courriel: sessionStorage.getItem("courriel"),
+            adresse: appartement.adresse
+        }
+        const btnFav = document.createElement("button")
+        btnFav.classList.add("bouton")
+        btnFav.classList.add("boutonBleu")
+
+        if (estFavoris(user)) {
+            btnFav.textContent = "Retirer Favoris"
+            document.querySelector(".boutonFavoris").appendChild(btnFav)
+            btnFav.addEventListener("click", async () => {
+
+                await fetch('https://equipe500.tch099.ovh/projet2/api/retirerfavoris',
+                    {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(user)
+                    })
+            })
+        }
+        else {
+            btnFav.textContent = "Ajouter comme Favoris"
+            document.querySelector(".boutonFavoris").appendChild(btnFav)
+            btnFav.addEventListener("click", async () => {
+
+                await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterfavoris',
+                    {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(user)
+                    })
+            })
+        }
     }
+}
+
+async function estFavoris(user) {
+
+    const response = await fetch('https://equipe500.tch099.ovh/projet2/api/estFavoris', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user)
+    })
+    const result = await response.json();
+
+    return result["message"] == "esetFavoris"
 }

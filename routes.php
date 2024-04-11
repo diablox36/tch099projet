@@ -179,24 +179,19 @@ get('/projet2/api/ordonnerpropriete/$ordre', function ($ordre) {
     echo json_encode($result);
 });
 
-get('/projet2/api/trouverfavoris/$courriel', function () {
+get('/projet2/api/trouverfavoris/$courriel', function ($courriel) {
     global $pdo;
 
-    $json = file_get_contents('php://input');
-    $data = json_decode($json, true);
 
-    if (isset ($data["courriel"])) {
-        $req = $pdo->prepare('SELECT * from `eq2propriete` INNER JOIN `eq2favoris` ON eq2propriete.id = eq2favoris.id WHERE eq2favoris.courriel = :courriel');
-        $req->execute([
-            "courriel" => $data["courriel"],
-        ]);
-        $result = $req->fetchAll(PDO::FETCH_ASSOC);
-        header('Content-type: application/json');
-        echo json_encode($result);
-    } else {
-        header('Content-type: application/json');
-        echo json_encode(['message' => 'error']);
-    }
+    $req = $pdo->prepare('SELECT * from `eq2propriete` INNER JOIN `eq2favoris` ON eq2propriete.id = eq2favoris.id WHERE eq2favoris.courriel = :courriel');
+    $req->execute([
+        "courriel" => $courriel,
+    ]);
+    $result = $req->fetchAll(PDO::FETCH_ASSOC);
+
+    header('Content-type: application/json');
+    echo json_encode($result);
+
 });
 
 //Methodes POST
@@ -382,6 +377,33 @@ post('/projet2/api/retirerfavoris', function () {
         $req->execute([
             "courriel" => $data["courriel"],
         ]);
+    } else {
+        header('Content-type: application/json');
+        echo json_encode(['message' => 'error']);
+    }
+});
+
+post('/projet2/api/estFavoris', function () {
+    global $pdo;
+
+    $json = file_get_contents('php://input');
+    $data = json_decode($json, true);
+
+    if (isset ($data["courriel"]) && isset ($data["adresse"])) {
+        $req = $pdo->prepare('SELECT * FROM `eq2favoris` WHERE courriel = :courriel AND adresse = :adresse');
+        $req->execute([
+            "courriel" => $data["courriel"],
+            "adresse" => $data["adresse"]
+        ]);
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+
+        if (isset ($result[0]['courriel'])) {
+            header('Content-type: application/json');
+            echo json_encode(['message' => 'estFavoris']);
+        } else {
+            header('Content-type: application/json');
+            echo json_encode(['message' => 'pasFavoris']);
+        }
     } else {
         header('Content-type: application/json');
         echo json_encode(['message' => 'error']);
