@@ -48,7 +48,7 @@ function afficherInformation(appartement, image_url) {
         document.querySelector(".boutonFavoris").appendChild(btnAjoutFav)
         btnAjoutFav.addEventListener("click", async () => {
             const nouveauFav = {
-                courrielFav: document.cookie.id,
+                courrielFav: sessionStorage.getItem("id"),
                 adresseFav: adresse
             }
             await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterutilisateur',
