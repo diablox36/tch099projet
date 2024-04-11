@@ -52,7 +52,7 @@ function afficherInformation(appartement, image_url) {
                 courrielFav: sessionStorage.getItem("id"),
                 adresseFav: adresse
             }
-            await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterutilisateur',
+            await fetch('https://equipe500.tch099.ovh/projet2/api/ajouterfavoris',
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
