@@ -20,7 +20,7 @@ btnLogin.addEventListener('click', async (event) => {
     const result = await response.json();
     if (result['message'] == "valide") {
         sessionStorage.setItem('type_compte', result['type_compte'])
-        console.log(result['type_compte'])
+        console.log(sessionStorage.getItem('type_compte'))
         sessionStorage.setItem('courriel', result['adresse_courriel'])
 
         if (result['type_compte'] == "locataire") {
