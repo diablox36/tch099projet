@@ -40,9 +40,7 @@ function afficherInformation(appartement, image_url) {
     courrielProprietaire.textContent = appartement.proprietaire_adresse_courriel
     courrielProprietaire.href = "mailto:" + appartement.proprietaire_adresse_courriel + "?subject=Au sujet de l'appartement sur " + appartement.adresse
 
-
-    console.log(sessionStorage.getItem("type_compte"))
-    if (document.cookie.typeCompte == "locataire") {
+    if (sessionStorage.getItem("type_compte") == "locataire") {
         const btnAjoutFav = document.createElement("button")
         btnAjoutFav.textContent = "Ajouter comme Favoris"
         btnAjoutFav.classList.add("bouton")
