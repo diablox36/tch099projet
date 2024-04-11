@@ -26,7 +26,6 @@ btnLogin.addEventListener('click', async (event) => {
             location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/")
         }
         else if(result['type_compte'] == "propriétaire"){
-            console.log("proprietaire")
             location.replace("https://equipe500.tch099.ovh/projet2/LocAppart/proprietaire")
         }
     }
