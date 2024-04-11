@@ -47,6 +47,7 @@ function afficherInformation(appartement, image_url) {
         btnAjoutFav.classList.add("boutonBleu")
         document.querySelector(".boutonFavoris").appendChild(btnAjoutFav)
         btnAjoutFav.addEventListener("click", async () => {
+            console.log("allo")
             const nouveauFav = {
                 courrielFav: sessionStorage.getItem("id"),
                 adresseFav: adresse
