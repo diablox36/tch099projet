@@ -86,6 +86,7 @@ async function estFavoris(user) {
         body: JSON.stringify(user)
     })
     const result = await response.json();
+    console.log(result["message"])
 
     return result["message"] == "estFavoris"
 }
