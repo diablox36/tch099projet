@@ -49,7 +49,7 @@ function afficherInformation(appartement, image_url) {
         btnFav.classList.add("bouton")
         btnFav.classList.add("boutonBleu")
 
-        if (estFavoris(user)) {
+        if (!estFavoris(user)) {
             btnFav.textContent = "Retirer Favoris"
             document.querySelector(".boutonFavoris").appendChild(btnFav)
             btnFav.addEventListener("click", async () => {
