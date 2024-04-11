@@ -48,7 +48,7 @@ function afficherInformation(appartement, image_url) {
         document.querySelector(".boutonFavoris").appendChild(btnAjoutFav)
         btnAjoutFav.addEventListener("click", async () => {
             const nouveauFav = {
-                courriel: sessionStorage.getItem("id"),
+                courriel: sessionStorage.getItem("courriel"),
                 adresse: appartement.adresse
             }
             console.log(nouveauFav)
