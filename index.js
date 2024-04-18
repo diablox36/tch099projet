@@ -73,7 +73,7 @@ selectTrier.onchange = (event) => {
     fetchAppartements("https://equipe500.tch099.ovh/projet2/api/proprietes")
   }
   else {
-    if (selectText != "Favoris") {
+    if (selectText != "favoris") {
       fetchAppartements("https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/" + selectText);
     }
     else {
