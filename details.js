@@ -67,6 +67,7 @@ async function afficherInformation(appartement, image_url) {
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(user)
                     })
+                location.reload();
             })
         }
         else {
@@ -80,6 +81,7 @@ async function afficherInformation(appartement, image_url) {
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(user)
                     })
+                location.reload();
             })
         }
     }
