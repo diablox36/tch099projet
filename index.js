@@ -3,7 +3,7 @@ const btnConnexion = document.querySelector("#btnConnexion")
 const messageConnexion = document.querySelector(".message")
 const nombreAppartementsText = document.querySelector(".nombreAppartements")
 const main = document.querySelector("main");
-const selectTrier = document.querySelector("select")
+const selectTrier = document.querySelector("#select")
 const filtre = document.querySelector(".filtre")
 const btn = document.createElement("button")
 

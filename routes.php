@@ -183,7 +183,7 @@ get('/projet2/api/trouverfavoris/$courriel', function ($courriel) {
     global $pdo;
 
 
-    $req = $pdo->prepare("SELECT * from `eq2propriete` INNER JOIN `eq2favoris` ON eq2propriete.adresse = eq2favoris.adresse WHERE eq2favoris.courriel = ':courriel'");
+    $req = $pdo->prepare('SELECT * from `eq2propriete` INNER JOIN `eq2favoris` ON eq2propriete.adresse = eq2favoris.adresse WHERE eq2favoris.courriel = :courriel');
     $req->execute([
         "courriel" => $courriel,
     ]);
