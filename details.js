@@ -13,7 +13,7 @@ async function fetchLocation() {
     afficherInformation(appartements[0], images[0]['image_url'])
 }
 
-function afficherInformation(appartement, image_url) {
+async function afficherInformation(appartement, image_url) {
     const image = document.querySelector("img")
     const prix = document.querySelector("#prix")
     const adresse = document.querySelector("#adresse")
@@ -49,9 +49,14 @@ function afficherInformation(appartement, image_url) {
         btnFav.classList.add("bouton")
         btnFav.classList.add("boutonBleu")
 
-        console.log(estFavoris(user)["result"])
+        const response = await fetch('https://equipe500.tch099.ovh/projet2/api/estFavoris', {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(user)
+        })
+        const result = await response.json();
 
-        if (estFavoris(user)) {
+        if (result["message"] === "estFavoris") {
             btnFav.textContent = "Retirer Favoris"
             document.querySelector(".boutonFavoris").appendChild(btnFav)
             btnFav.addEventListener("click", async () => {
@@ -80,14 +85,3 @@ function afficherInformation(appartement, image_url) {
     }
 }
 
-async function estFavoris(user) {
-
-    const response = await fetch('https://equipe500.tch099.ovh/projet2/api/estFavoris', {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user)
-    })
-    const result = await response.json();
-
-    return await result["message"] === "estFavoris"
-}
