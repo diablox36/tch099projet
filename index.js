@@ -76,6 +76,7 @@ selectTrier.onchange = (event) => {
       fetchAppartements("https://equipe500.tch099.ovh/projet2/api/ordonnerpropriete/" + selectText);
     }
     else {
+      console.log(sessionStorage.getItem("courriel"))
       fetchAppartements("https://equipe500.tch099.ovh/projet2/api/trouverfavoris/" + sessionStorage.getItem("courriel"))
     }
   }
