@@ -68,7 +68,6 @@ async function afficherInformation(appartement, image_url) {
                         body: JSON.stringify(user)
                     })
             })
-            location.reload();
         }
         else {
             btnFav.textContent = "Ajouter comme Favoris"
@@ -82,7 +81,6 @@ async function afficherInformation(appartement, image_url) {
                         body: JSON.stringify(user)
                     })
             })
-            location.reload();
         }
     }
 }
