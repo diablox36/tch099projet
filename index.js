@@ -68,7 +68,6 @@ selectTrier.onchange = (event) => {
   while (main.hasChildNodes()) {
     main.removeChild(main.firstChild)
   }
-  console.log(selectText)
   if (selectText === "") {
     fetchAppartements("https://equipe500.tch099.ovh/projet2/api/proprietes")
   }
