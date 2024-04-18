@@ -138,6 +138,7 @@ get('/projet2/api/supprimerimage/$idImage', function ($idImage) {
     header('Content-type: application/json');
     echo json_encode(['message' => 'success']);
 });
+
 get('/projet2/api/supprimerimagespropriete/$idPropriete', function ($idPropriete) {
     global $pdo;
 
@@ -148,7 +149,6 @@ get('/projet2/api/supprimerimagespropriete/$idPropriete', function ($idPropriete
     header('Content-type: application/json');
     echo json_encode(['message' => 'success']);
 });
-
 
 get('/projet2/api/ordonnerpropriete/$ordre', function ($ordre) {
     global $pdo;
@@ -183,7 +183,7 @@ get('/projet2/api/trouverfavoris/$courriel', function ($courriel) {
     global $pdo;
 
 
-    $req = $pdo->prepare('SELECT * from `eq2propriete` INNER JOIN `eq2favoris` ON eq2propriete.adresse = eq2favoris.adresse WHERE eq2favoris.courriel = :courriel');
+    $req = $pdo->prepare("SELECT * from `eq2propriete` INNER JOIN `eq2favoris` ON eq2propriete.adresse = eq2favoris.adresse WHERE eq2favoris.courriel = ':courriel'");
     $req->execute([
         "courriel" => $courriel,
     ]);
