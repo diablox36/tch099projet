@@ -26,7 +26,6 @@ if (sessionStorage.getItem("type_compte") == "locataire") {
   messageConnexion.style.display = "none"
 }
 
-console.log(sessionStorage.getItem("courriel"))
 document.addEventListener('DOMContentLoaded', fetchAppartements("https://equipe500.tch099.ovh/projet2/api/proprietes"))
 
 // Fin du main, début des fonctions
@@ -69,6 +68,7 @@ selectTrier.onchange = (event) => {
   while (main.hasChildNodes()) {
     main.removeChild(main.firstChild)
   }
+  console.log(sessionStorage.getItem("courriel"))
   if (selectText === "") {
     fetchAppartements("https://equipe500.tch099.ovh/projet2/api/proprietes")
   }
