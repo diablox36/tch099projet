@@ -179,6 +179,23 @@ get('/projet2/api/ordonnerpropriete/$ordre', function ($ordre) {
     echo json_encode($result);
 });
 
+get('/projet2/api/retirerfavoris', function () {
+    global $pdo;
+
+    $json = file_get_contents('php://input');
+    $data = json_decode($json, true);
+
+    if (isset ($data["courriel"])) {
+        $req = $pdo->prepare('DELETE FROM `eq2favoris` WHERE courriel = :courriel');
+        $req->execute([
+            "courriel" => $data["courriel"],
+        ]);
+    } else {
+        header('Content-type: application/json');
+        echo json_encode(['message' => 'error']);
+    }
+});
+
 get('/projet2/api/trouverfavoris/$courriel', function ($courriel) {
     global $pdo;
 
@@ -359,23 +376,6 @@ post('/projet2/api/ajouterfavoris', function () {
         $req->execute([
             "courriel" => $data["courriel"],
             "adresse" => $data["adresse"],
-        ]);
-    } else {
-        header('Content-type: application/json');
-        echo json_encode(['message' => 'error']);
-    }
-});
-
-post('/projet2/api/retirerfavoris', function () {
-    global $pdo;
-
-    $json = file_get_contents('php://input');
-    $data = json_decode($json, true);
-
-    if (isset ($data["courriel"])) {
-        $req = $pdo->prepare('DELETE FROM `eq2favoris` WHERE courriel = :courriel');
-        $req->execute([
-            "courriel" => $data["courriel"],
         ]);
     } else {
         header('Content-type: application/json');
