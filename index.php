@@ -103,7 +103,7 @@
           <li>id</li>
         </ul>
         <a href="https://equipe500.tch099.ovh/projet2/api/ajouterimage">projet2/api/ajouterimage</a><br>
-        <p>Ahoute une image avec les paramètres suivant</p>
+        <p>Ajoute une image avec les paramètres suivant</p>
         <ul>
           <li>image_url</li>
           <li>propriete_id</li>
