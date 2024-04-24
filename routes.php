@@ -179,7 +179,7 @@ get('/projet2/api/ordonnerpropriete/$ordre', function ($ordre) {
     echo json_encode($result);
 });
 
-get('/projet2/api/retirerfavoris', function () {
+post('/projet2/api/retirerfavoris', function () {
     global $pdo;
 
     $json = file_get_contents('php://input');
