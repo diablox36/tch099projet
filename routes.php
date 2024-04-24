@@ -186,9 +186,10 @@ post('/projet2/api/retirerfavoris', function () {
     $data = json_decode($json, true);
 
     if (isset ($data["courriel"])) {
-        $req = $pdo->prepare('DELETE FROM `eq2favoris` WHERE courriel = :courriel');
+        $req = $pdo->prepare('DELETE FROM `eq2favoris` WHERE courriel = :courriel AND adresse = :adresse');
         $req->execute([
             "courriel" => $data["courriel"],
+            "adresse" => $data["adresse"]
         ]);
     } else {
         header('Content-type: application/json');
